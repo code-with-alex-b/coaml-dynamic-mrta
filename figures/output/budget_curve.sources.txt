@@ -1,0 +1,68 @@
+Figure: budget_curve.pdf
+Written: 2026-08-17 11:11:40 UTC
+
+Source files and sha256
+-----------------------
+provenance/figure42_budget/a3_rh_test_h1_b0.010s.csv
+  bytes  25325
+  sha256 9fa72fc9b2741bb1d5789ed7a8b33e951cabc557fc2ae769118ce3b07102e6b3
+provenance/figure42_budget/a3_rh_test_h1_b0.025s.csv
+  bytes  25144
+  sha256 920dcd70166620ae91a43fcfe04e86fdc50d3cbd62a534e026a320e901a9424c
+provenance/figure42_budget/a3_rh_test_h1_b0.050s.csv
+  bytes  24721
+  sha256 81f2f144a60a2689de49e7f9d4a1153acb70bc78c7adcfc79bcc14339ea658f1
+provenance/figure42_budget/a3_rh_test_h1_b0.100s.csv
+  bytes  24413
+  sha256 538518f88c2917f0da44f025882b8849e4b9a49fde5747937078d00474aaa72a
+provenance/figure42_budget/a3_rh_test_h1_b0.250s.csv
+  bytes  24385
+  sha256 c8f49b9f79aa6e8f2ccf276139cfbca7a9a645d794168bcec3b4cb75b7c82465
+provenance/figure42_budget/a3_rh_test_h1_b1.0s.csv
+  bytes  23983
+  sha256 c796cf84c503b9c7236247ba55462a5870ab3a02abe38fb9f517f6cd0cd80515
+provenance/figure42_budget/a3_rh_test_h1_b10.0s.csv
+  bytes  24183
+  sha256 4adfb897bff15ce57a24736cf3154977a86c015fd11ee0b2b3a50895747db8b3
+provenance/figure42_budget/a3_ladder_walltimes.txt
+  bytes  741
+  sha256 18693a50d5ad1b631a7f7f65c06e11747380bcdbfa12f0e7866609d1c04283a8
+provenance/table41_main_results/b3_hungarian_distance_only_test_20260731.csv
+  bytes  25827
+  sha256 6309fd639ce85de7f63be8fcbcaeef8873f182534ada4e84245ea78e0e5f51d7
+provenance/table41_main_results/a2_per_instance_test_20260730.csv
+  bytes  82469
+  sha256 5b796e007f0ae10811732a48b631e750bc33afd552833367479c090ac8cdcfa4
+provenance/figure42_budget/b3_timing_test_20260731.csv
+  bytes  1040437
+  sha256 cad3b8e464a8d4e085dbeedb6190accb764a27ae3ad34d1b2d1531721aba153a
+figures/style.py
+  bytes  6222
+  sha256 f1219ca27d7c7aab52838caa8249dc83d2f460676fb04ca964d38585eed95c9b
+figures/fig_budget_curve.py
+  bytes  23699
+  sha256 5d3faa40b852fa59cc4bceff92464140e0540b2c63ab886effbd4ec0a51d46ac
+
+Values
+------
+budget 0.01 s: nominal 10 ms, measured 12.167 ms per solved decision (1.217x nominal), 7.303 ms per dispatcher epoch, gap closure 20.396 %, fallback 36.63 %, sweep wall 64 s, mean solves/instance 26.30, mean epochs/instance 43.82, n=200
+budget 0.025 s: nominal 25 ms, measured 20.946 ms per solved decision (0.838x nominal), 13.506 ms per dispatcher epoch, gap closure 34.950 %, fallback 17.68 %, sweep wall 116 s, mean solves/instance 27.69, mean epochs/instance 42.95, n=200
+budget 0.05 s: nominal 50 ms, measured 33.542 ms per solved decision (0.671x nominal), 22.984 ms per dispatcher epoch, gap closure 47.721 %, fallback 6.83 %, sweep wall 193 s, mean solves/instance 28.77, mean epochs/instance 41.98, n=200
+budget 0.1 s: nominal 100 ms, measured 56.386 ms per solved decision (0.564x nominal), 39.543 ms per dispatcher epoch, gap closure 52.584 %, fallback 1.43 %, sweep wall 332 s, mean solves/instance 29.44, mean epochs/instance 41.98, n=200
+budget 0.25 s: nominal 250 ms, measured 105.601 ms per solved decision (0.422x nominal), 75.778 ms per dispatcher epoch, gap closure 62.857 %, fallback 0.05 %, sweep wall 626 s, mean solves/instance 29.64, mean epochs/instance 41.30, n=200
+budget 1 s: nominal 1000 ms, measured 225.607 ms per solved decision (0.226x nominal), 161.812 ms per dispatcher epoch, gap closure 73.223 %, fallback 0.00 %, sweep wall 1311 s, mean solves/instance 29.05, mean epochs/instance 40.51, n=200
+budget 10 s: nominal 10000 ms, measured 537.342 ms per solved decision (0.054x nominal), 388.772 ms per dispatcher epoch, gap closure 75.886 %, fallback 0.00 %, sweep wall 3137 s, mean solves/instance 29.19, mean epochs/instance 40.34, n=200
+learned policy: gap closure 50.372 % (ratio of means, n=200), compute marked 1.1092 ms, being the test-split median whole decision over 2587 timed decisions
+crossing: between the 0.05 s rung (33.542 ms, 47.721 %) and the 0.1 s rung (56.386 ms, 52.584 %); log-linear interpolation puts it at 44.5 ms, about 40x the learned policy's marked compute
+
+Notes
+-----
+Quantity plotted on y: gap closure as the ratio of mean costs, (mean greedy - mean policy) / (mean greedy - mean MILP), over the 200 test instances on seeds 11200 to 11399. The floor is the distance-only Hungarian from b3_hungarian_distance_only_test_20260731.csv and the ceiling is the cached MILP objective carried in each rung's own milp_oracle_cost_from_cache column. Recomputed here from per-instance CSVs; no value is read from any summary table, report or aggregate JSON. The seven values reproduce Table 1 of results_tables_v2_20260731.md exactly, as does the learned policy's 50.372 %.
+Quantity plotted on x: measured wall clock for the whole rung, divided by the 200 instances, divided by the mean number of window solves per instance. It therefore includes model construction, the simulator step and the epochs that advanced without a solve, none of which the Gurobi TimeLimit covers. The wall clock comes from a3_ladder_walltimes.txt, the timing log written by the ladder driver itself.
+Measured compute is NOT the nominal budget and the two diverge in both directions. At the 10 ms rung the measured cost is 1.217x the budget because model construction sits outside the limit. At the 10 s rung it is 0.054x the budget because almost every solve terminates well before the limit. Plotting against the nominal budget would stretch the x axis by up to a factor of nineteen and would misplace the crossing.
+Denominator choice on x. n_window_solves counts the dispatcher invocations that reached the solver, which is what the budget is applied to once each. n_decisions counts every simulator epoch, including those that advanced with nothing pending, and is about 1.4x larger. The former is plotted, matching fig_budget_crossover.py; the latter is recorded per rung above so the figure can be rebuilt on either convention.
+Open markers mark the rungs where the fallback assignment decided more than 10 % of window solves, being 36.63 % at the 10 ms budget and 17.68 % at 25 ms. On those two rungs a substantial share of decisions was made by Hungarian-on-kappa rather than by the rolling horizon, so the points describe a hybrid policy and should not be read as the rolling horizon's own performance. The script asserts that exactly the two shortest rungs exceed the threshold and fails if that ever changes.
+The learned policy compute mark is 1.1092 ms, the median whole decision over the 2587 timed decisions in b3_timing_test_20260731.csv, which is the TEST split. Every quantity in this figure is therefore on one split: gap closure, costs and both compute axes all come from the 200 test instances on seeds 11200 to 11399. It is the same value fig_budget_crossover.py marks at this scale, so the two figures agree. An earlier draft marked 0.92 ms, the median from the A6 run (a6_inference_timing_20260730.md), which is a VALIDATION measurement over 50 instances and 2234 decisions and is 21 % lower. That value is not used here. The change does not move the crossing, which is fixed by the y axis, but it does change the crossing's compute multiple from about 48x to about 40x.
+All timings were measured under x86 emulation on this machine, per the environment note in a6_inference_timing_20260730.md. The comparison is internally consistent because Gurobi and the policy ran under the same emulation, but the absolute milliseconds are not native-hardware figures.
+Serve-all is 200 of 200 on every rung and on the learned policy, asserted by the script, so no point is scored on a self-selected subset.
+No solver was invoked, nothing was evaluated or trained, and no cache record was read or modified. This script reads six CSVs and one text log.

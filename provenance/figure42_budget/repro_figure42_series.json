@@ -1,0 +1,150 @@
+{
+  "script": "scripts/figure42_series.py",
+  "git_head": "aca454d0c154705efe6c45c8f9e24700760478e8",
+  "generated_utc": "2026-08-05T14:03:24.532212+00:00",
+  "floor": "provenance/table41_main_results/b3_hungarian_distance_only_test_20260731.csv",
+  "ceiling": "milp_oracle_cost_from_cache column of each rung",
+  "wall_clock": "provenance/figure42_budget/a3_ladder_walltimes.txt",
+  "n_instances": 200,
+  "split": "test, seeds 11200 to 11399",
+  "rungs": {
+    "0.010": {
+      "nominal_ms": 10,
+      "n": 200,
+      "mean_rh_cost": 147.0504465601654,
+      "gap_closure_ratio_of_means_pct": 20.395723378913633,
+      "gap_closure_mean_of_ratios_pct": 18.020359210089133,
+      "wall_seconds": 64,
+      "mean_window_solves_per_instance": 26.3,
+      "measured_ms_per_solved_decision": 12.167300380228136,
+      "measured_over_nominal": 1.2167300380228137,
+      "fallback_pct_of_window_solves": 36.634980988593156,
+      "no_incumbent_pct": 36.634980988593156,
+      "serve_all": "200/200"
+    },
+    "0.025": {
+      "nominal_ms": 25,
+      "n": 200,
+      "mean_rh_cost": 137.89578523558947,
+      "gap_closure_ratio_of_means_pct": 34.949669949996945,
+      "gap_closure_mean_of_ratios_pct": 33.562069530730966,
+      "wall_seconds": 116,
+      "mean_window_solves_per_instance": 27.69,
+      "measured_ms_per_solved_decision": 20.946189960274463,
+      "measured_over_nominal": 0.8378475984109786,
+      "fallback_pct_of_window_solves": 17.67786204405923,
+      "no_incumbent_pct": 17.67786204405923,
+      "serve_all": "200/200"
+    },
+    "0.050": {
+      "nominal_ms": 50,
+      "n": 200,
+      "mean_rh_cost": 129.86242184693592,
+      "gap_closure_ratio_of_means_pct": 47.720993475717506,
+      "gap_closure_mean_of_ratios_pct": 46.04884517969295,
+      "wall_seconds": 193,
+      "mean_window_solves_per_instance": 28.77,
+      "measured_ms_per_solved_decision": 33.54188390684741,
+      "measured_over_nominal": 0.6708376781369482,
+      "fallback_pct_of_window_solves": 6.830031282586027,
+      "no_incumbent_pct": 6.830031282586027,
+      "serve_all": "200/200"
+    },
+    "0.100": {
+      "nominal_ms": 100,
+      "n": 200,
+      "mean_rh_cost": 126.80322853357025,
+      "gap_closure_ratio_of_means_pct": 52.58445422590552,
+      "gap_closure_mean_of_ratios_pct": 51.218333725520736,
+      "wall_seconds": 332,
+      "mean_window_solves_per_instance": 29.44,
+      "measured_ms_per_solved_decision": 56.385869565217384,
+      "measured_over_nominal": 0.5638586956521738,
+      "fallback_pct_of_window_solves": 1.4266304347826086,
+      "no_incumbent_pct": 1.4266304347826086,
+      "serve_all": "200/200"
+    },
+    "0.250": {
+      "nominal_ms": 250,
+      "n": 200,
+      "mean_rh_cost": 120.34165481905895,
+      "gap_closure_ratio_of_means_pct": 62.85696953498171,
+      "gap_closure_mean_of_ratios_pct": 62.392365198431335,
+      "wall_seconds": 626,
+      "mean_window_solves_per_instance": 29.64,
+      "measured_ms_per_solved_decision": 105.60053981106613,
+      "measured_over_nominal": 0.4224021592442645,
+      "fallback_pct_of_window_solves": 0.05060728744939271,
+      "no_incumbent_pct": 0.05060728744939271,
+      "serve_all": "200/200"
+    },
+    "1.0": {
+      "nominal_ms": 1000,
+      "n": 200,
+      "mean_rh_cost": 113.82151629142518,
+      "gap_closure_ratio_of_means_pct": 73.22259032670874,
+      "gap_closure_mean_of_ratios_pct": 73.6078676527185,
+      "wall_seconds": 1311,
+      "mean_window_solves_per_instance": 29.055,
+      "measured_ms_per_solved_decision": 225.60660815694374,
+      "measured_over_nominal": 0.22560660815694372,
+      "fallback_pct_of_window_solves": 0.0,
+      "no_incumbent_pct": 0.0,
+      "serve_all": "200/200"
+    },
+    "10.0": {
+      "nominal_ms": 10000,
+      "n": 200,
+      "mean_rh_cost": 112.14619224190432,
+      "gap_closure_ratio_of_means_pct": 75.8859959778301,
+      "gap_closure_mean_of_ratios_pct": 76.36528454348638,
+      "wall_seconds": 3137,
+      "mean_window_solves_per_instance": 29.19,
+      "measured_ms_per_solved_decision": 537.3415553271669,
+      "measured_over_nominal": 0.053734155532716696,
+      "fallback_pct_of_window_solves": 0.0,
+      "no_incumbent_pct": 0.0,
+      "serve_all": "200/200"
+    }
+  },
+  "claims": {
+    "C102": {
+      "budget": "0.010",
+      "published": 18.02,
+      "ratio_of_means": 20.395723378913633,
+      "mean_of_ratios": 18.020359210089133,
+      "matches_ratio_of_means": false,
+      "matches_mean_of_ratios": true
+    },
+    "C104": {
+      "budget": "1.0",
+      "published": 73.22,
+      "ratio_of_means": 73.22259032670874,
+      "mean_of_ratios": 73.6078676527185,
+      "matches_ratio_of_means": true,
+      "matches_mean_of_ratios": false
+    },
+    "C103": {
+      "budget": "10.0",
+      "published": 76.37,
+      "ratio_of_means": 75.8859959778301,
+      "mean_of_ratios": 76.36528454348638,
+      "matches_ratio_of_means": false,
+      "matches_mean_of_ratios": true
+    },
+    "C105": {
+      "budget": "0.010",
+      "published_phrase": "over a third",
+      "fallback_pct": 36.634980988593156
+    },
+    "C106": {
+      "budget": "0.050",
+      "published_phrase": "under 7 per cent",
+      "fallback_pct": 6.830031282586027
+    }
+  },
+  "largest_discrepancy_vs_manifest": {
+    "value": 0.0004601889338715637,
+    "where": "0.250/compute"
+  }
+}

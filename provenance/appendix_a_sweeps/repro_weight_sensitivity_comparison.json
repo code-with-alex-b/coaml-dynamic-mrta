@@ -1,0 +1,799 @@
+{
+  "script": "scripts/weight_sensitivity.py",
+  "git_head": "aca454d0c154705efe6c45c8f9e24700760478e8",
+  "generated_utc": "2026-08-12T13:25:09.520917+00:00",
+  "compared_against": "provenance/weight_sensitivity_test_20260804.md",
+  "protocol": {
+    "n_boot": 10000,
+    "bootstrap_seed": 20260731,
+    "interval": "95 per cent percentile, 2.5 and 97.5",
+    "resamples": "instances, with replacement, paired across the two policies",
+    "estimator_source": "reweight in scripts/term_decomposition.py, which draws its index matrix with boot_indices and takes percentiles with ci, both from scripts/transfer_table_stats.py"
+  },
+  "inputs": {
+    "policy": {
+      "path": "provenance/table41_main_results/repro_terms_policy_hard_test.csv",
+      "sha256": "3bb6240b3f676dd873ac2e08144276640a3ab0efcbc2e049f7ee539aa138d6be"
+    },
+    "baseline": {
+      "path": "provenance/table41_main_results/repro_terms_hungarian_distance_only_test.csv",
+      "sha256": "2dd2d963bb9ed31e505427cf62031c3475949fc6907511fc25e3ea5bc9ee3ae5"
+    }
+  },
+  "w6_cross_check": {
+    "source": "provenance/methodology/repro_weight_calibration.json",
+    "calibration_record": [
+      0.06236405280502964,
+      0.23557337994916025,
+      0.7020625672458101
+    ],
+    "literal_in_this_script": [
+      0.06236405280502964,
+      0.23557337994916025,
+      0.7020625672458101
+    ],
+    "max_abs_difference": 0.0,
+    "identical": true
+  },
+  "vectors": [
+    {
+      "id": "W1",
+      "label": "production",
+      "weights": [
+        0.0637,
+        0.2398,
+        0.6965
+      ],
+      "supplementary": false,
+      "note": "the locked production triple"
+    },
+    {
+      "id": "W2",
+      "label": "equal thirds, normalised",
+      "weights": [
+        0.00038340618050762977,
+        0.0014788524105294291,
+        0.004301075268817204
+      ],
+      "supplementary": false,
+      "note": "one third divided by each Table 3.1 reference magnitude, printed in the markdown as 0.000383, 0.001479 and 0.004301"
+    },
+    {
+      "id": "W2r",
+      "label": "equal thirds, raw",
+      "weights": [
+        0.3333333333333333,
+        0.3333333333333333,
+        0.3333333333333333
+      ],
+      "supplementary": true,
+      "note": "printed as 0.3333 on all three terms, exactly one third here, and the ratio is invariant to the common scale either way"
+    },
+    {
+      "id": "W3",
+      "label": "travel-heavy",
+      "weights": [
+        0.6,
+        0.2,
+        0.2
+      ],
+      "supplementary": false,
+      "note": ""
+    },
+    {
+      "id": "W4",
+      "label": "makespan-heavy",
+      "weights": [
+        0.2,
+        0.6,
+        0.2
+      ],
+      "supplementary": false,
+      "note": ""
+    },
+    {
+      "id": "W5",
+      "label": "as written",
+      "weights": [
+        0.2,
+        0.6,
+        0.2
+      ],
+      "supplementary": false,
+      "note": "identical to W4 as specified, which the markdown states and reports twice on purpose"
+    },
+    {
+      "id": "W5b",
+      "label": "balance-light",
+      "weights": [
+        0.475,
+        0.475,
+        0.05
+      ],
+      "supplementary": true,
+      "note": ""
+    },
+    {
+      "id": "W7",
+      "label": "balance-zero",
+      "weights": [
+        0.5,
+        0.5,
+        0.0
+      ],
+      "supplementary": true,
+      "note": ""
+    },
+    {
+      "id": "W6",
+      "label": "reciprocal rule, test split",
+      "weights": [
+        0.06236405280502964,
+        0.23557337994916025,
+        0.7020625672458101
+      ],
+      "supplementary": false,
+      "note": "the reciprocal rule on the test-split distance-only Hungarian term means, printed in the markdown as 0.062364, 0.235573 and 0.702063, and carried at full precision from provenance/methodology/repro_weight_calibration.json"
+    }
+  ],
+  "comparison": {
+    "n_numbers_compared": 81,
+    "n_agreeing": 81,
+    "vectors_disagreeing": [],
+    "per_vector": [
+      {
+        "vector": "W1",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 128.195,
+            "regenerated": 128.19459525092827,
+            "abs_diff": 0.0004047490717198343,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 159.88,
+            "regenerated": 159.8796773871267,
+            "abs_diff": 0.0003226128733047062,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.8018,
+            "regenerated": 0.8018192014518685,
+            "abs_diff": 1.92014518685113e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.7884,
+            "regenerated": 0.7884045769750052,
+            "abs_diff": 4.576975005221584e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.8156,
+            "regenerated": 0.8156485420053956,
+            "abs_diff": 4.854200539561315e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -31.685,
+            "regenerated": -31.685082136198407,
+            "abs_diff": 8.213619840802266e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -34.084,
+            "regenerated": -34.08393727588744,
+            "abs_diff": 6.272411255991983e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -29.226,
+            "regenerated": -29.226113218377485,
+            "abs_diff": 0.00011321837748567987,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 195,
+            "regenerated": 195.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W2",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 0.7827,
+            "regenerated": 0.7827343348333626,
+            "abs_diff": 3.4334833362681394e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 0.9784,
+            "regenerated": 0.9784356709237305,
+            "abs_diff": 3.567092373046865e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.8,
+            "regenerated": 0.7999854850900843,
+            "abs_diff": 1.4514909915774865e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.7865,
+            "regenerated": 0.7864943673036503,
+            "abs_diff": 5.632696349677779e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.8139,
+            "regenerated": 0.8139078305092112,
+            "abs_diff": 7.830509211270709e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -0.1957,
+            "regenerated": -0.19570133609036788,
+            "abs_diff": 1.3360903678705238e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -0.2105,
+            "regenerated": -0.21048669675054454,
+            "abs_diff": 1.3303249455448585e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -0.1806,
+            "regenerated": -0.1805698972657183,
+            "abs_diff": 3.010273428172283e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 195,
+            "regenerated": 195.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W2r",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 366.096,
+            "regenerated": 366.09583888782043,
+            "abs_diff": 0.0001611121795690451,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 381.564,
+            "regenerated": 381.563696904522,
+            "abs_diff": 0.0003030954780456341,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9595,
+            "regenerated": 0.9594619243335091,
+            "abs_diff": 3.807566649094429e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.9523,
+            "regenerated": 0.9523044350926607,
+            "abs_diff": 4.435092660681761e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.9669,
+            "regenerated": 0.9668572964848461,
+            "abs_diff": 4.270351515389681e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -15.468,
+            "regenerated": -15.467858016701616,
+            "abs_diff": 0.00014198329838421841,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -18.212,
+            "regenerated": -18.211526254781468,
+            "abs_diff": 0.00047374521853171814,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -12.609,
+            "regenerated": -12.609376803154438,
+            "abs_diff": 0.0003768031544382211,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 164,
+            "regenerated": 164.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W3",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 560.158,
+            "regenerated": 560.1578411853949,
+            "abs_diff": 0.00015881460512900958,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 567.213,
+            "regenerated": 567.2132066918989,
+            "abs_diff": 0.0002066918989385158,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9876,
+            "regenerated": 0.9875613518457155,
+            "abs_diff": 3.864815428455959e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.9808,
+            "regenerated": 0.9808126604865027,
+            "abs_diff": 1.2660486502724666e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.9945,
+            "regenerated": 0.9944749343439774,
+            "abs_diff": 2.5065656022671412e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -7.055,
+            "regenerated": -7.0553655065039536,
+            "abs_diff": 0.00036550650395383855,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -10.88,
+            "regenerated": -10.879728580497828,
+            "abs_diff": 0.0002714195021731314,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -3.135,
+            "regenerated": -3.1346645570551064,
+            "abs_diff": 0.00033544294489340487,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 129,
+            "regenerated": 129.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W4",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 305.57,
+            "regenerated": 305.5704664351199,
+            "abs_diff": 0.0004664351199039629,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 318.491,
+            "regenerated": 318.4907781690415,
+            "abs_diff": 0.0002218309584804956,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9594,
+            "regenerated": 0.9594326975236186,
+            "abs_diff": 3.269752361856337e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.9522,
+            "regenerated": 0.9521800528955572,
+            "abs_diff": 1.9947104442863406e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.9669,
+            "regenerated": 0.966874172424178,
+            "abs_diff": 2.5827575822034987e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -12.92,
+            "regenerated": -12.920311733921602,
+            "abs_diff": 0.00031173392160255275,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -15.213,
+            "regenerated": -15.212689295697553,
+            "abs_diff": 0.00031070430244639624,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -10.539,
+            "regenerated": -10.538937136281469,
+            "abs_diff": 6.286371853114758e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 163,
+            "regenerated": 163.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W5",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 305.57,
+            "regenerated": 305.5704664351199,
+            "abs_diff": 0.0004664351199039629,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 318.491,
+            "regenerated": 318.4907781690415,
+            "abs_diff": 0.0002218309584804956,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9594,
+            "regenerated": 0.9594326975236186,
+            "abs_diff": 3.269752361856337e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.9522,
+            "regenerated": 0.9521800528955572,
+            "abs_diff": 1.9947104442863406e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.9669,
+            "regenerated": 0.966874172424178,
+            "abs_diff": 2.5827575822034987e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -12.92,
+            "regenerated": -12.920311733921602,
+            "abs_diff": 0.00031173392160255275,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -15.213,
+            "regenerated": -15.212689295697553,
+            "abs_diff": 0.00031070430244639624,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -10.539,
+            "regenerated": -10.538937136281469,
+            "abs_diff": 6.286371853114758e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 163,
+            "regenerated": 163.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W5b",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 507.979,
+            "regenerated": 507.97850809799905,
+            "abs_diff": 0.0004919020009310771,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 511.801,
+            "regenerated": 511.8013248971618,
+            "abs_diff": 0.00032489716181771655,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9925,
+            "regenerated": 0.9925306625575249,
+            "abs_diff": 3.066255752481872e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.986,
+            "regenerated": 0.9860493893452674,
+            "abs_diff": 4.9389345267436546e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.9992,
+            "regenerated": 0.9992011413030317,
+            "abs_diff": 1.1413030317486417e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -3.823,
+            "regenerated": -3.8228167991628283,
+            "abs_diff": 0.0001832008371716043,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -7.156,
+            "regenerated": -7.156423563288451,
+            "abs_diff": 0.0004235632884510565,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -0.406,
+            "regenerated": -0.40617609431339624,
+            "abs_diff": 0.0001760943133962134,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 116,
+            "regenerated": 116.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W7",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 533.017,
+            "regenerated": 533.016626193913,
+            "abs_diff": 0.0003738060870546178,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 534.784,
+            "regenerated": 534.7844357193925,
+            "abs_diff": 0.0004357193924988678,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.9967,
+            "regenerated": 0.9966943512050768,
+            "abs_diff": 5.64879492326309e-06,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.9902,
+            "regenerated": 0.9902145256583248,
+            "abs_diff": 1.4525658324826551e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 1.0033,
+            "regenerated": 1.0033471550314204,
+            "abs_diff": 4.715503142027622e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -1.768,
+            "regenerated": -1.767809525479516,
+            "abs_diff": 0.00019047452048392977,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -5.25,
+            "regenerated": -5.250472895228183,
+            "abs_diff": 0.0004728952281833898,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": 1.793,
+            "regenerated": 1.7925219918882815,
+            "abs_diff": 0.00047800811171838653,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 110,
+            "regenerated": 110.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      },
+      {
+        "vector": "W6",
+        "n_compared": 9,
+        "n_agreeing": 9,
+        "passes": true,
+        "disagreements": [],
+        "fields": {
+          "mean_policy_cost": {
+            "published": 126.329,
+            "regenerated": 126.32898195563426,
+            "abs_diff": 1.804436573138446e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "mean_baseline_cost": {
+            "published": 158.221,
+            "regenerated": 158.22149436376657,
+            "abs_diff": 0.0004943637665633105,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "cost_ratio": {
+            "published": 0.7984,
+            "regenerated": 0.7984312274613693,
+            "abs_diff": 3.122746136929866e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_low": {
+            "published": 0.7849,
+            "regenerated": 0.7848871989406361,
+            "abs_diff": 1.2801059363964917e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "ratio_ci95_high": {
+            "published": 0.8124,
+            "regenerated": 0.8124130783443968,
+            "abs_diff": 1.3078344396788566e-05,
+            "tolerance": 5.0000001000000005e-05,
+            "agrees": true
+          },
+          "mean_paired_difference": {
+            "published": -31.893,
+            "regenerated": -31.892512408132344,
+            "abs_diff": 0.0004875918676567892,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_low": {
+            "published": -34.298,
+            "regenerated": -34.29803792655969,
+            "abs_diff": 3.792655968481995e-05,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "paired_difference_ci95_high": {
+            "published": -29.429,
+            "regenerated": -29.428832580277362,
+            "abs_diff": 0.00016741972263645266,
+            "tolerance": 0.000500000001,
+            "agrees": true
+          },
+          "n_instances_policy_cheaper": {
+            "published": 195,
+            "regenerated": 195.0,
+            "abs_diff": 0.0,
+            "tolerance": 0.500000000001,
+            "agrees": true
+          }
+        }
+      }
+    ]
+  },
+  "outputs": {
+    "csv": "provenance/appendix_a_sweeps/repro_weight_sensitivity.csv",
+    "sha256": "47fdd38c7a156453c8f44f9060a07e0e5c4b6f4cc2e7a7e7405efe870bb3ab48",
+    "n_rows": 9
+  }
+}

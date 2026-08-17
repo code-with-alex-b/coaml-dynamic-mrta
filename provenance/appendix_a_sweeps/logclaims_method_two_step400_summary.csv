@@ -1,0 +1,7 @@
+arm,gap_at_step_400,last_recorded_gap,last_step,log_present,n_evaluations,note,reached_step_400,sha256
+production,0.3881,0.5219,1000,1,40,the production Method Two run,1,556e01636c50d1def9e371885dd8804463be2f2d4ae938df2c0a47a099f06995
+production_replicate,0.4447,0.4447,400,1,16,"stage 3, a production replicate because no architecture cell cleared the selection threshold",1,629be31e71510a013f5061ea3a68be1a5b3e6d5e92449a82741340856518b839
+epsilon_endpoint_035,0.4003,0.4003,400,1,16,"stage 4, epsilon endpoint 0.5 to 0.35",1,2135a8c4318682000ec31765f624840e432ee507271718895be4c28cf7d52d51
+k40_batch64,0.4567,0.4567,400,1,16,"stage 5, K 20 to 40 and batch 128 to 64 at fixed K times batch",1,5c853eca04f6b1ffefdb45bfb110fff17f5d9a4e52c337121967a1f56e0ea087
+archL2H128_warmstart,0.4056,0.3538,1000,1,40,"1000 step budget, does the Method One L2_H128 architecture gain survive into Method Two",1,cbae05c25e99a90afac22fba60a2f71fe91c2339e656da7d077eed94a193e382
+eps060_warmstart,0.3980,0.4060,525,1,21,"1000 step budget, does the Method One epsilon floor 0.60 gain survive into Method Two",1,b830361427f0c76cf25db7cd26b53eca6e2dba7b06e272bd50c71385e0db3594

@@ -1,0 +1,247 @@
+{
+  "script": "scripts/export_series_and_logs.py",
+  "generated_utc": "2026-08-14T16:56:49.788178+00:00",
+  "series": {
+    "warm": {
+      "label": "Warm start from Method One, production run",
+      "checkpoint": "checkpoints/sweep_G_v4warmstart.pt",
+      "checkpoint_sha256": "f150b1c6a2c930b5dd249378733cb9bad6e06be56dd99381506f60f0e8f8c3d7",
+      "csv": "provenance/figure41_training/series_warm_start_training.csv",
+      "csv_sha256": "b64a2eb2aeb91f0348ad3ae593c82230216632fa1b3a1f82a4bd9789c226f849",
+      "n_rows": 1000,
+      "final_step": 1000,
+      "length_is_1000": true,
+      "grad_n_unique": 1000,
+      "grad_n_consecutive_equal": 0,
+      "grad_is_true_per_step": true,
+      "grad_peak": 288.59844970703125,
+      "grad_peak_step": 914,
+      "grad_min": 28.88695526123047,
+      "grad_largest_10step_block_mean": 164.77161865234376,
+      "grad_largest_block_mean_ending_step": 920,
+      "grad_mean_first_150": 55.85401177724202,
+      "grad_mean_last_150": 142.83560674031577,
+      "cost_step_1": 153.87394101531302,
+      "cost_step_1000": 132.31061963195125,
+      "cost_fall_raw_endpoints": 21.563321383361767
+    },
+    "cold": {
+      "label": "Cold start, DM-17",
+      "checkpoint": "checkpoints/sweep_G_coldstart.pt",
+      "checkpoint_sha256": "cd86a3a049d806ed60bc6e881a61ce61d07f8125be57549024e5dec8473ab9f4",
+      "csv": "provenance/figure41_training/series_cold_start_training.csv",
+      "csv_sha256": "d45875de74d81bb77acc2d414e84d777feee16c31d89df167836519d9c87f86f",
+      "n_rows": 1000,
+      "final_step": 1000,
+      "length_is_1000": true,
+      "grad_n_unique": 1000,
+      "grad_n_consecutive_equal": 0,
+      "grad_is_true_per_step": true,
+      "grad_peak": 2368.673583984375,
+      "grad_peak_step": 963,
+      "grad_min": 6.3102312088012695,
+      "grad_largest_10step_block_mean": 1207.7351455688477,
+      "grad_largest_block_mean_ending_step": 1000,
+      "grad_mean_first_150": 13.988376811345418,
+      "grad_mean_last_150": 877.863023071289,
+      "cost_step_1": 164.01717528139497,
+      "cost_step_1000": 152.38774315431232,
+      "cost_fall_raw_endpoints": 11.629432127082652
+    }
+  },
+  "per_step_or_block_mean": {
+    "available": true,
+    "log": "logs/sweep_G_v4warmstart.log",
+    "logged_values_checked": 100,
+    "equal_to_10_step_block_mean_of_history": 100,
+    "equal_to_single_history_entry": 0,
+    "conclusion": "the checkpoint history is per-step and the LOG is the ten-step block mean of it"
+  },
+  "log_claim_groups": {
+    "il_dataset_size": {
+      "csv": "provenance/methodology/logclaims_il_dataset_size.csv",
+      "sha256": "c7fe822b57720198bf813d72e3c305d7935f2a30d9e22eebb36c3dacd5cb7638",
+      "n_rows": 2,
+      "claims": [
+        "C024",
+        "C025"
+      ],
+      "C025_examples": 14498,
+      "C024_examples_per_instance": "14.498",
+      "note": "the log holds two IL runs; the 13711-example run is the earlier 30000-step run and is NOT the source of C024 or C025"
+    },
+    "milp_resolve_300s": {
+      "csv": "provenance/appendix_c_benchmark/logclaims_milp_resolve_300s.csv",
+      "sha256": "219169fa989f7f726f63fa60f5487926563d121f6995f7751fd51ab083b669e8",
+      "summary_csv": "provenance/repro/logclaims_milp_resolve_300s_summary.csv",
+      "summary_sha256": "2461568675dfda42e583f284c976dc6f75c575d975453fc6ef9ed4f14cfe1528",
+      "n_rows": 20,
+      "claims": [
+        "C031",
+        "C032"
+      ],
+      "mean_incumbent_improvement_pct": "0.637",
+      "max_incumbent_improvement_pct": "2.995",
+      "gap_closure_60s_denominator_pct": "49.27",
+      "gap_closure_300s_denominator_pct": "48.61",
+      "n_instances_in_gap_closure": 17,
+      "gap_closure_movement_points": "0.6600000000000037",
+      "n_insane_seeds": 3,
+      "insane_seeds": "11044;11055;11169"
+    },
+    "linear_scorer_loss": {
+      "csv": "provenance/methodology/logclaims_linear_scorer_loss.csv",
+      "sha256": "de2fc0af9d496da8d12a0242e9e7113f0484dec392472b488d5ab6f639573fd7",
+      "n_rows": 20,
+      "claims": [
+        "C040"
+      ],
+      "step_2500_present": true,
+      "loss_at_step_2500": "-0.0122",
+      "step_range": "500 to 10000"
+    },
+    "dagger_rounds": {
+      "csv": "provenance/repro/logclaims_dagger_rounds.csv",
+      "sha256": "78e4de30bde3274a21badb52cfac405bfc8b948c83fcf17e38e10eabc8fe31f1",
+      "n_rows": 5,
+      "claims": [
+        "C041"
+      ],
+      "rounds_evidenced_directly": [
+        "1",
+        "3",
+        "4",
+        "4_full"
+      ],
+      "rounds_missing": [
+        "2"
+      ]
+    },
+    "sweep_G_warmstart_evals": {
+      "csv": "provenance/appendix_a_sweeps/logclaims_sweep_G_warmstart_evals.csv",
+      "sha256": "7a5b7104ffa359bca566a170579b9e0f7feae7e956bb3a580741917dac98c909",
+      "n_rows": 40,
+      "claims": [
+        "C043",
+        "C044",
+        "C096",
+        "C097"
+      ],
+      "C043_cadence_steps": [
+        25
+      ],
+      "C044_n_evaluations": 40,
+      "C096_first_step_at_or_above_50pct": 600,
+      "C096_value_there_pct": "50.39",
+      "C097_plateau_mean_pct": "51.03941176470589",
+      "C097_n_evaluations_in_plateau": 17,
+      "n_val_values_present": [
+        200
+      ]
+    },
+    "method_two_step400": {
+      "csv": "provenance/appendix_a_sweeps/logclaims_method_two_step400.csv",
+      "sha256": "cc97eeeda05440ef3f5d8b0746378503184e90997802b2c1314097d749ff46c3",
+      "summary_csv": "provenance/appendix_a_sweeps/logclaims_method_two_step400_summary.csv",
+      "summary_sha256": "6a7e263e7246995ec44f26e34324464c3a9269487857bc598fa4230cf30f1953",
+      "n_rows": 149,
+      "arms": {
+        "production": {
+          "log_present": 1,
+          "note": "the production Method Two run",
+          "sha256": "556e01636c50d1def9e371885dd8804463be2f2d4ae938df2c0a47a099f06995",
+          "n_evaluations": 40,
+          "last_step": 1000,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.3881",
+          "last_recorded_gap": "0.5219"
+        },
+        "production_replicate": {
+          "log_present": 1,
+          "note": "stage 3, a production replicate because no architecture cell cleared the selection threshold",
+          "sha256": "629be31e71510a013f5061ea3a68be1a5b3e6d5e92449a82741340856518b839",
+          "n_evaluations": 16,
+          "last_step": 400,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.4447",
+          "last_recorded_gap": "0.4447"
+        },
+        "epsilon_endpoint_035": {
+          "log_present": 1,
+          "note": "stage 4, epsilon endpoint 0.5 to 0.35",
+          "sha256": "2135a8c4318682000ec31765f624840e432ee507271718895be4c28cf7d52d51",
+          "n_evaluations": 16,
+          "last_step": 400,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.4003",
+          "last_recorded_gap": "0.4003"
+        },
+        "k40_batch64": {
+          "log_present": 1,
+          "note": "stage 5, K 20 to 40 and batch 128 to 64 at fixed K times batch",
+          "sha256": "5c853eca04f6b1ffefdb45bfb110fff17f5d9a4e52c337121967a1f56e0ea087",
+          "n_evaluations": 16,
+          "last_step": 400,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.4567",
+          "last_recorded_gap": "0.4567"
+        },
+        "archL2H128_warmstart": {
+          "log_present": 1,
+          "note": "1000 step budget, does the Method One L2_H128 architecture gain survive into Method Two",
+          "sha256": "cbae05c25e99a90afac22fba60a2f71fe91c2339e656da7d077eed94a193e382",
+          "n_evaluations": 40,
+          "last_step": 1000,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.4056",
+          "last_recorded_gap": "0.3538"
+        },
+        "eps060_warmstart": {
+          "log_present": 1,
+          "note": "1000 step budget, does the Method One epsilon floor 0.60 gain survive into Method Two",
+          "sha256": "b830361427f0c76cf25db7cd26b53eca6e2dba7b06e272bd50c71385e0db3594",
+          "n_evaluations": 21,
+          "last_step": 525,
+          "reached_step_400": 1,
+          "gap_at_step_400": "0.3980",
+          "last_recorded_gap": "0.4060"
+        }
+      },
+      "claims": [
+        "appendix A Method Two sensitivity"
+      ]
+    },
+    "benchmark_quality": {
+      "csv": "provenance/methodology/cache_benchmark_quality.csv",
+      "sha256": "1a1742ae5a933e36b4e5ae10218edc22a8d887224c4bc4e2e3aa77a45faf84db",
+      "n_rows": 2,
+      "claims": [
+        "C010",
+        "C011",
+        "C026",
+        "C027",
+        "C028",
+        "C029"
+      ]
+    }
+  },
+  "claims_covered": [
+    "C010",
+    "C011",
+    "C024",
+    "C025",
+    "C026",
+    "C027",
+    "C028",
+    "C029",
+    "C031",
+    "C032",
+    "C040",
+    "C041",
+    "C043",
+    "C044",
+    "C096",
+    "C097",
+    "appendix A Method Two sensitivity"
+  ]
+}

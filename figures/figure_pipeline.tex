@@ -1,0 +1,184 @@
+% Figure 3.1, the COAML pipeline for dynamic MRTA.
+% Preamble requirements
+%   \usepackage{tikz}
+%   \usetikzlibrary{arrows}
+% Natural size is 14.48 cm by 15.2 cm, sized for the thesis text width.
+% Include with \input{figure_pipeline} and do not rescale.
+%
+\providecommand{\figlab}{\fontsize{8}{9.4}\selectfont\hyphenpenalty=10000\relax}%
+\providecommand{\figann}{\fontsize{7}{8.2}\selectfont\hyphenpenalty=10000\relax}%
+%
+\providecolor{fgAccent}{RGB}{20,86,150}%
+\providecolor{fgAccentFill}{RGB}{224,235,246}%
+\providecolor{fgDark}{RGB}{45,45,45}%
+\providecolor{fgMid}{RGB}{120,120,120}%
+\providecolor{fgLine}{RGB}{160,160,160}%
+\providecolor{fgFill}{RGB}{243,243,243}%
+\providecolor{fgBand}{RGB}{247,247,247}%
+%
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  >=stealth',
+  line join=round,
+  every node/.style={font=\figann},
+  fwd/.style={
+    draw=fgLine, line width=0.5pt, fill=fgFill, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=2.4cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  solve/.style={
+    draw=fgAccent, line width=1.1pt, fill=fgAccentFill, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=2.4cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  sub/.style={
+    draw=fgLine, line width=0.5pt, fill=white, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=2.2cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  subsolve/.style={
+    draw=fgAccent, line width=0.9pt, fill=fgAccentFill, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=2.2cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  relax/.style={
+    draw=fgMid, line width=0.7pt, dash pattern=on 0.1pt off 1.8pt,
+    line cap=round, fill=white, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=2.2cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  sim/.style={
+    draw=fgLine, line width=0.5pt, fill=fgFill, rounded corners=1.5pt,
+    minimum width=2.26cm, minimum height=0.85cm, text width=2.02cm,
+    align=center, inner sep=2pt, text=fgDark, font=\figann},
+  fwdline/.style={draw=fgDark, line width=1.1pt},
+  illine/.style={draw=fgMid, line width=0.6pt, dash pattern=on 2.4pt off 1.5pt},
+  rlline/.style={draw=fgMid, line width=0.6pt, dash pattern=on 0.1pt off 1.8pt, line cap=round},
+  warm/.style={draw=fgAccent, line width=1.2pt},
+  tag/.style={text=fgMid, inner sep=1.5pt, font=\figann},
+  band/.style={fill=fgBand, rounded corners=3pt, draw=none},
+  bandtitle/.style={anchor=north west, text=fgDark, inner sep=0pt},
+  bandsub/.style={anchor=north west, text=fgMid, inner sep=0pt, align=left, font=\figann}
+]
+
+\path[use as bounding box] (0,-7.95) rectangle (14.48,7.25);
+
+% ================================================================ imitation
+\path[band] (0.15,3.25) rectangle (14.40,7.05);
+\node[bandtitle] at (0.35,6.90) {{\figlab Imitation learning\par}};
+\node[bandsub, text width=2.40cm] at (0.35,6.48)
+  {trains on single states, so the simulator never runs\par};
+
+\node[sub] (expert) at (4.01,4.90)
+  {{\figlab Expert matching $P^\star$\par}\vspace{1.5pt}
+   anticipative MILP, solved offline\par};
+
+\node[sub] (loss) at (6.59,4.90)
+  {{\figlab Fenchel-Young loss\par}\vspace{1.5pt}
+   prediction minus expert\par};
+
+\node[subsolve] (pert) at (9.17,4.90)
+  {{\figlab Perturbed prediction $\hat{y}_\varepsilon(\Theta)$\par}\vspace{1.5pt}
+   $S$ Gumbel draws, exact\par};
+
+\draw[illine,->] (5.14,4.90) -- (5.46,4.90);
+\draw[illine,->] (8.04,4.90) -- (7.72,4.90);
+
+% ================================================================ forward pass
+\path[band] (0.15,-2.75) rectangle (13.03,2.85);
+\node[bandtitle] at (0.30,2.70) {{\figlab Forward pass\par}};
+\node[bandsub, text width=5.0cm] at (0.30,2.30)
+  {one epoch, repeated 20 times per episode\par};
+
+\draw[draw=fgDark, line width=0.9pt, fill=white] (1.43,1.82) circle (0.15);
+\node[anchor=west, text=fgDark, inner sep=2pt] at (1.61,1.82) {start};
+\draw[fwdline,->] (1.43,1.67) -- (1.43,1.20);
+
+\node[fwd] (state) at (1.43,0)
+  {{\figlab State $s_h$\par}\vspace{1.5pt}
+   robots, tasks, busy times\par};
+
+\node[fwd] (feat) at (4.01,0)
+  {{\figlab Feature construction\par}\vspace{1.5pt}
+   one vector per node\par};
+
+\node[fwd] (gnn) at (6.59,0)
+  {{\figlab GNN scorer\par}\vspace{1.5pt}
+   one score per robot and task\par};
+
+\node[fwd] (mat) at (9.17,0) {};
+\node[anchor=north, text width=2.02cm, align=center, text=fgDark, inner sep=0pt] at (9.17,1.10)
+  {{\figlab Augmented score matrix\par}};
+\path[fill=fgAccentFill] (8.31,0.02) rectangle (9.45,0.36);
+\draw[draw=fgLine, line width=0.5pt] (8.31,-0.44) rectangle (10.05,0.36);
+\draw[draw=fgLine, line width=0.5pt] (9.45,-0.44) -- (9.45,0.36);
+\draw[draw=fgLine, line width=0.5pt] (8.31,0.02) -- (10.05,0.02);
+\node[text=fgDark, inner sep=0pt] at (8.88,0.19) {$\Theta$};
+\node[text=fgMid, inner sep=0pt] at (9.75,0.19) {idle};
+\node[text=fgMid, inner sep=0pt] at (8.88,-0.21) {wait};
+\node[text=fgMid, inner sep=0pt] at (9.75,-0.21) {0};
+\node[anchor=north, text width=2.02cm, align=center, text=fgDark, inner sep=0pt] at (9.17,-0.54)
+  {invalid pairs masked\par};
+
+\node[solve] (hung) at (11.75,0)
+  {{\figlab Exact Hungarian solve\par}\vspace{1.5pt}
+   commits the action\par};
+
+\draw[fwdline,->] (2.56,0) -- (2.88,0);
+\draw[fwdline,->] (5.14,0) -- (5.46,0);
+\draw[fwdline,->] (7.72,0) -- (8.04,0);
+\draw[fwdline,->] (10.30,0) -- (10.62,0);
+
+\node[sim] (simu) at (1.43,-1.98)
+  {{\figlab Simulator\par}\vspace{1.5pt}advances one epoch\par};
+\draw[fwdline,->] (11.20,-1.20) -- (11.20,-1.98) -- (2.56,-1.98);
+\draw[fwdline,->] (1.43,-1.555) -- (1.43,-1.20);
+
+% imitation branch and return
+\draw[illine,->] (9.17,1.20) -- (9.17,3.80);
+\draw[illine,->] (6.59,3.80) -- (6.59,1.20);
+\node[anchor=east, tag] at (6.47,2.50) {$\nabla_\Theta L$};
+
+% ================================================================ reinforcement
+\path[band] (0.15,-7.05) rectangle (14.40,-3.15);
+\node[bandtitle] at (0.35,-3.30) {{\figlab Reinforcement learning\par}};
+\node[bandsub, text width=2.40cm] at (0.35,-3.72)
+  {trains on complete episodes, one update per group of $K$ rollouts\par};
+
+\node[sub] (sfe) at (6.59,-5.05)
+  {{\figlab Score function gradient\par}\vspace{1.5pt}
+   sampled minus expected\par
+   weighted by centred return\par};
+
+\node[relax] (sink) at (9.17,-5.05)
+  {{\figlab Sinkhorn expected matching\par}\vspace{1.5pt}
+   relaxed, one per epoch of every rollout\par};
+
+\node[sub] (roll) at (11.75,-5.05)
+  {{\figlab $K$ rollouts\par}\vspace{1.5pt}
+   sampled actions, realised cost $C_k$\par};
+
+\draw[rlline,->] (12.35,-1.20) -- (12.35,-3.95);
+\draw[rlline,->] (10.62,-5.05) -- (10.30,-5.05);
+\draw[rlline,->] (8.04,-5.05) -- (7.72,-5.05);
+\draw[rlline,->] (11.75,-6.15) -- (11.75,-6.60) -- (6.59,-6.60) -- (6.59,-6.15);
+\draw[rlline] (6.59,-3.95) -- (6.59,-2.30);
+\draw[rlline,->] (6.59,-1.66) -- (6.59,-1.20);
+\node[anchor=east, tag] at (6.47,-3.60) {$\nabla_\Theta$};
+
+% ================================================================ warm start
+\draw[draw=fgAccent, line width=0.9pt, fill=white] (13.70,4.90) circle (0.15);
+\node[anchor=east, text=fgAccent, inner sep=2pt] at (13.52,4.90) {trained scorer};
+\draw[warm,->] (13.70,4.75) -- (13.70,-5.05) -- (12.88,-5.05);
+\node[anchor=east, text=fgAccent, inner sep=2pt] at (13.58,3.72) {warm start, weights only};
+
+% ================================================================ legend
+\draw[fwdline] (0.30,-7.55) -- (0.80,-7.55);
+\node[anchor=west, tag] at (0.88,-7.55) {Forward path};
+\draw[illine] (2.58,-7.55) -- (3.08,-7.55);
+\node[anchor=west, tag] at (3.16,-7.55) {Imitation gradient};
+\draw[rlline] (5.56,-7.55) -- (6.06,-7.55);
+\node[anchor=west, tag] at (6.14,-7.55) {Reinforcement gradient};
+\draw[draw=fgAccent, line width=0.9pt, fill=fgAccentFill, rounded corners=1pt]
+  (9.04,-7.67) rectangle (9.54,-7.43);
+\node[anchor=west, tag] at (9.62,-7.55) {Exact solve};
+\draw[draw=fgMid, line width=0.7pt, dash pattern=on 0.1pt off 1.8pt, line cap=round,
+  fill=white, rounded corners=1pt] (11.22,-7.67) rectangle (11.72,-7.43);
+\node[anchor=west, tag] at (11.80,-7.55) {Relaxed, no solve};
+
+\end{tikzpicture}

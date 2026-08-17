@@ -1,0 +1,10 @@
+metric,value
+n_instances_in_gap_closure,17
+mean_gap_closure_60s_pct,49.269912447650285
+median_gap_closure_60s_pct,55.620840635779956
+mean_gap_closure_300s_pct,48.611277509202374
+median_gap_closure_300s_pct,55.52572466877766
+mean_gap_closure_3600s_pct,47.578180802386235
+median_gap_closure_3600s_pct,55.52572424370915
+movement_vs_60s_300s_points,-0.6586349384479107
+movement_vs_60s_3600s_points,-1.6917316452640492

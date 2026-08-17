@@ -1,0 +1,136 @@
+{
+  "script": "scripts/regenerate/calibrate_weights.py",
+  "git_head": "235d87c9fb1e97e924acfe6681578dbb52f125c9",
+  "generated_utc": "2026-08-17T00:33:13.216959+00:00",
+  "rule": "w_i = (1/X_i) / sum_j (1/X_j), Equation 3.1",
+  "policy": "distance-only Hungarian, run_greedy_policy, which reads no weights",
+  "splits": {
+    "train": {
+      "cache_dir": "cache/training_set_il_v3/train",
+      "n": 1000,
+      "seed_min": 10000,
+      "seed_max": 10999,
+      "serve_all": "1000/1000",
+      "mean": {
+        "travel": 858.3655328011108,
+        "makespan": 226.6861232606561,
+        "balance": 75.5465737554616
+      },
+      "sd": {
+        "travel": 165.26637654958404,
+        "makespan": 33.69213085037617,
+        "balance": 19.895383538150465
+      },
+      "derived_weights": {
+        "travel": 0.06192467064383785,
+        "makespan": 0.2344828265010814,
+        "balance": 0.7035925028550808
+      },
+      "contribution_pct": {
+        "travel": 33.333333333333336,
+        "makespan": 33.33333333333333,
+        "balance": 33.333333333333336
+      },
+      "abs_deviation_from_hardcoded": {
+        "travel": 0.0017753293561621544,
+        "makespan": 0.005317173498918609,
+        "balance": 0.0070925028550807845
+      },
+      "max_abs_deviation_from_hardcoded": 0.0070925028550807845
+    },
+    "test": {
+      "cache_dir": "cache/training_set_il_v3/test",
+      "n": 200,
+      "seed_min": 11200,
+      "seed_max": 11399,
+      "serve_all": "200/200",
+      "mean": {
+        "travel": 845.6874713729642,
+        "makespan": 223.8814000658207,
+        "balance": 75.12221927478114
+      },
+      "sd": {
+        "travel": 146.01093164243116,
+        "makespan": 28.80718863644159,
+        "balance": 18.884748514324908
+      },
+      "derived_weights": {
+        "travel": 0.06236405280502964,
+        "makespan": 0.23557337994916025,
+        "balance": 0.7020625672458101
+      },
+      "contribution_pct": {
+        "travel": 33.333333333333336,
+        "makespan": 33.333333333333336,
+        "balance": 33.33333333333333
+      },
+      "abs_deviation_from_hardcoded": {
+        "travel": 0.0013359471949703633,
+        "makespan": 0.004226620050839763,
+        "balance": 0.005562567245810057
+      },
+      "max_abs_deviation_from_hardcoded": 0.005562567245810057
+    },
+    "val": {
+      "cache_dir": "cache/training_set_il_v3/val",
+      "n": 200,
+      "seed_min": 11000,
+      "seed_max": 11199,
+      "serve_all": "200/200",
+      "mean": {
+        "travel": 852.5987563538712,
+        "makespan": 225.79862416857083,
+        "balance": 76.62030780940785
+      },
+      "sd": {
+        "travel": 175.64441404484072,
+        "makespan": 33.060797099919675,
+        "balance": 18.719845551242887
+      },
+      "derived_weights": {
+        "travel": 0.0628792113151693,
+        "makespan": 0.23742721004270734,
+        "balance": 0.6996935786421233
+      },
+      "contribution_pct": {
+        "travel": 33.33333333333333,
+        "makespan": 33.33333333333333,
+        "balance": 33.33333333333333
+      },
+      "abs_deviation_from_hardcoded": {
+        "travel": 0.0008207886848307089,
+        "makespan": 0.002372789957292676,
+        "balance": 0.003193578642123329
+      },
+      "max_abs_deviation_from_hardcoded": 0.003193578642123329
+    },
+    "diagnosis": {
+      "hardcoded_weights": {
+        "travel": 0.0637,
+        "makespan": 0.2398,
+        "balance": 0.6965
+      },
+      "reported_magnitudes_table_3_1": {
+        "travel": 869.4,
+        "makespan": 225.4,
+        "balance": 77.5
+      },
+      "weights_implied_by_reported_magnitudes": {
+        "travel": 0.062207595633428134,
+        "makespan": 0.2399435831575085,
+        "balance": 0.6978488212090634
+      },
+      "max_dev_reported_magnitudes_vs_hardcoded": 0.0014924043665718728,
+      "magnitudes_implied_by_hardcoded_weights": {
+        "travel": 848.5230769230768,
+        "makespan": 225.4,
+        "balance": 77.60361809045226
+      },
+      "contributions_under_reported": {
+        "travel": 33.890598795854245,
+        "makespan": 33.07678303315363,
+        "balance": 33.03261817099212
+      }
+    }
+  }
+}

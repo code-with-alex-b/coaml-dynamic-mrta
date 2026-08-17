@@ -1,0 +1,95 @@
+{
+  "script": "scripts/regenerate/export_term_provenance.py",
+  "git_head": "235d87c9fb1e97e924acfe6681578dbb52f125c9",
+  "generated_utc": "2026-08-17T00:34:10.714552+00:00",
+  "split": "test",
+  "seed_min": 11200,
+  "seed_max": 11399,
+  "n_instances": 200,
+  "weights": {
+    "w1_travel": 0.0637,
+    "w2_makespan": 0.2398,
+    "w3_balance": 0.6965
+  },
+  "sources": {
+    "learned_policy_hard": {
+      "path": "results/a2_per_instance_test_20260730.csv",
+      "sha256": "5b796e007f0ae10811732a48b631e750bc33afd552833367479c090ac8cdcfa4",
+      "filter": "decode_mode == hard"
+    },
+    "hungarian_distance_only": {
+      "path": "provenance/table41_main_results/b3_hungarian_distance_only_test_20260731.csv",
+      "sha256": "6309fd639ce85de7f63be8fcbcaeef8873f182534ada4e84245ea78e0e5f51d7",
+      "filter": "policy == hungarian_distance_only"
+    },
+    "anticipative_milp": {
+      "cache_dir_resolved": "cache/training_set_il_v3/test",
+      "cache_dir_relative": "cache/training_set_il_v3/test",
+      "n_records": 200,
+      "weights_on_every_record": {
+        "w_dist": 0.0637,
+        "w_make": 0.2398,
+        "w_bal": 0.6965
+      },
+      "dual_bound_violations": []
+    }
+  },
+  "outputs": [
+    {
+      "csv": "provenance/table41_main_results/repro_terms_policy_hard_test.csv",
+      "sha256": "4ee4c28a91aede9d5a694530ccb6f45116fc89a568011cc75760657609283758",
+      "bytes": 17286,
+      "n_rows": 200,
+      "sidecar": "provenance/table41_main_results/repro_terms_policy_hard_test.csv.sha256"
+    },
+    {
+      "csv": "provenance/table41_main_results/repro_terms_hungarian_distance_only_test.csv",
+      "sha256": "764b84968801fddde67e49c2e9e3ccd39b3a61cd9b9078f126da192b7af632ee",
+      "bytes": 17222,
+      "n_rows": 200,
+      "sidecar": "provenance/table41_main_results/repro_terms_hungarian_distance_only_test.csv.sha256"
+    },
+    {
+      "csv": "provenance/table41_main_results/repro_terms_milp_test.csv",
+      "sha256": "196aa32b39459ce2bd298cb99196bd6d79683caf853e8df69c380997255d3206",
+      "bytes": 17253,
+      "n_rows": 200,
+      "sidecar": "provenance/table41_main_results/repro_terms_milp_test.csv.sha256"
+    }
+  ],
+  "identity_checks": {
+    "repro_terms_policy_hard_test.csv": {
+      "cost_column": "policy_cost",
+      "n_instances": 200,
+      "max_abs_residual": 2.842170943040401e-14,
+      "mean_abs_residual": 4.902744876744691e-15,
+      "tolerance": 1e-09,
+      "passes": true
+    },
+    "repro_terms_hungarian_distance_only_test.csv": {
+      "cost_column": "policy_cost",
+      "n_instances": 200,
+      "max_abs_residual": 8.526512829121202e-14,
+      "mean_abs_residual": 7.034373084024992e-15,
+      "tolerance": 1e-09,
+      "passes": true
+    },
+    "repro_terms_milp_test.csv": {
+      "cost_column": "milp_objective_value",
+      "n_instances": 200,
+      "max_abs_residual": 0.0032567771165474824,
+      "mean_abs_residual": 0.002173518671709296,
+      "tolerance": 0.005,
+      "passes": true
+    }
+  },
+  "guards": {
+    "cache_path_ends_in_v3_test": true,
+    "weights_on_every_record": true,
+    "seed_set_11200_to_11399_no_gaps": true,
+    "objective_at_or_above_dual_bound": true,
+    "n_equals_200_on_all_three": true,
+    "seed_sets_identical_across_the_three": true
+  },
+  "no_solver": "gurobipy is not imported by this script and no Gurobi licence is read"
+}

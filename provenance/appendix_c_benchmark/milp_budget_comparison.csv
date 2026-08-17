@@ -1,0 +1,9 @@
+metric,budget_60s,budget_300s,budget_3600s
+n_instances,20,20,20
+n_proven_optimal,4,4,4
+n_terminated_at_limit,16,16,16
+mean_optimality_gap,0.18630958245015528,0.1663448352667011,0.1332399469569972
+median_optimality_gap,0.21772815759529004,0.1851068006745344,0.15398557596316137
+mean_improvement_vs_60s_pct,0.0,0.636533760307705,1.951512265732043
+max_improvement_vs_60s_pct,0.0,2.994904601514938,8.701658510222147
+n_incumbent_unmoved_vs_60s,20,10,6

@@ -1,0 +1,290 @@
+% Figure 3.1, the dynamics of one instance over three decision epochs.
+% Schematic. The geometry and the commitments are invented for clarity and are
+% not drawn from any run.
+% R2 is the thread the reader follows. R2, the two tasks it takes and its
+% busy-time bar are drawn at full weight in the accent colour, and everything
+% else is present but held back in a light grey at reduced stroke weight.
+% Two rules govern the marks. A task carries its state on its outline alone,
+% one of three, and a dash means one thing only, being the carry leg a robot is
+% on between a pickup and its drop-off. A delivered task is removed from the
+% panel rather than given a state of its own, which clears the later panels.
+% Preamble requirements
+%   \usepackage{tikz}
+%   \usetikzlibrary{arrows}
+% Natural size is 14.48 cm by 7.90 cm, sized for the thesis text width.
+% Include with \input{figure_worked_instance} and do not rescale.
+%
+\providecommand{\figlab}{\fontsize{8}{9.4}\selectfont\hyphenpenalty=10000\relax}%
+\providecommand{\figann}{\fontsize{7}{8.2}\selectfont}%
+%
+\providecolor{fgAccent}{RGB}{20,86,150}%
+\providecolor{fgAccentFill}{RGB}{224,235,246}%
+\providecolor{fgDark}{RGB}{45,45,45}%
+\providecolor{fgMid}{RGB}{120,120,120}%
+\providecolor{fgLine}{RGB}{160,160,160}%
+\providecolor{fgFill}{RGB}{243,243,243}%
+\providecolor{fgBand}{RGB}{247,247,247}%
+%
+\begin{tikzpicture}[
+  x=1cm, y=1cm,
+  >=stealth',
+  line join=round,
+  every node/.style={font=\figann},
+  % arena frame
+  arena/.style={draw=fgLine, line width=0.5pt, fill=fgBand, rounded corners=1.5pt},
+  %
+  % ---------------------------------------------------------------- emphasis
+  % Two families of the same shapes. The f family is R2's thread, in the accent
+  % colour at full weight. The b family is everything else, in a light grey at
+  % reduced weight. Shape, fill and outline carry the same meaning in both, so
+  % the emphasis never changes what a marker means.
+  %
+  % robots. An open square is available to the dispatcher this epoch, a filled
+  % square is working and cannot be assigned.
+  fRfree/.style={rectangle, draw=fgAccent, line width=1.0pt, fill=white,
+    minimum size=2.4mm, inner sep=0pt},
+  fRbusy/.style={rectangle, draw=fgAccent, line width=0.7pt, fill=fgAccent,
+    minimum size=2.4mm, inner sep=0pt},
+  bRfree/.style={rectangle, draw=fgLine, line width=0.5pt, fill=white,
+    minimum size=2.1mm, inner sep=0pt},
+  bRbusy/.style={rectangle, draw=fgLine, line width=0.5pt, fill=fgLine,
+    minimum size=2.1mm, inner sep=0pt},
+  %
+  % tasks. Circular throughout. The three states are set apart by rendering
+  % rather than by stroke weight alone, so they stay separable at 1.6 mm.
+  %   not yet released  one ring,  drawn at reduced opacity, ghosted
+  %   pending           one ring,  full weight
+  %   being carried     two rings, full weight, largest
+  % Fill carries pickup against drop-off, tinted against open. The tint is kept
+  % well below the outline colour so the outline stays readable on a pickup.
+  % Nothing here is dashed.
+  fRelP/.style={circle, draw=fgAccent, line width=1.0pt, fill=fgAccent!45,
+    minimum size=1.6mm, inner sep=0pt, opacity=0.45},
+  fRelD/.style={circle, draw=fgAccent, line width=1.0pt, fill=white,
+    minimum size=1.6mm, inner sep=0pt, opacity=0.45},
+  fPendP/.style={circle, draw=fgAccent, line width=1.0pt, fill=fgAccent!45,
+    minimum size=1.7mm, inner sep=0pt},
+  fPendD/.style={circle, draw=fgAccent, line width=1.0pt, fill=white,
+    minimum size=1.7mm, inner sep=0pt},
+  fCarryP/.style={circle, draw=fgAccent, line width=0.75pt, double=white,
+    double distance=0.5pt, fill=fgAccent!45, minimum size=2.1mm, inner sep=0pt},
+  fCarryD/.style={circle, draw=fgAccent, line width=0.75pt, double=white,
+    double distance=0.5pt, fill=white, minimum size=2.1mm, inner sep=0pt},
+  bRelP/.style={circle, draw=fgLine, line width=0.8pt, fill=fgLine!35,
+    minimum size=1.5mm, inner sep=0pt, opacity=0.45},
+  bRelD/.style={circle, draw=fgLine, line width=0.8pt, fill=white,
+    minimum size=1.5mm, inner sep=0pt, opacity=0.45},
+  bPendP/.style={circle, draw=fgLine, line width=0.8pt, fill=fgLine!35,
+    minimum size=1.6mm, inner sep=0pt},
+  bPendD/.style={circle, draw=fgLine, line width=0.8pt, fill=white,
+    minimum size=1.6mm, inner sep=0pt},
+  bCarryP/.style={circle, draw=fgLine, line width=0.5pt, double=white,
+    double distance=0.4pt, fill=fgLine!35, minimum size=1.9mm, inner sep=0pt},
+  bCarryD/.style={circle, draw=fgLine, line width=0.5pt, double=white,
+    double distance=0.4pt, fill=white, minimum size=1.9mm, inner sep=0pt},
+  %
+  % the solid line pairing a pickup with its drop-off, ghosted to match while
+  % the task it belongs to has not yet been released
+  flink/.style={draw=fgAccent, line width=0.5pt},
+  blink/.style={draw=fgLine, line width=0.3pt},
+  fghost/.style={draw=fgAccent, line width=0.5pt, opacity=0.45},
+  bghost/.style={draw=fgLine, line width=0.3pt, opacity=0.45},
+  % the carry leg, the only dashed mark in the figure. It replaces the pairing
+  % line for as long as a robot is on it.
+  fcarry/.style={draw=fgAccent, line width=0.7pt,
+    dash pattern=on 2.4pt off 1.5pt},
+  bcarry/.style={draw=fgLine, line width=0.4pt,
+    dash pattern=on 2.4pt off 1.5pt},
+  % a commitment made this epoch, robot to pickup
+  commit/.style={draw=fgAccent, line width=1.0pt},
+  bcommit/.style={draw=fgLine, line width=0.5pt},
+  % the leaders that name a pickup, a drop-off and an available robot once, in
+  % the first panel, in place of legend entries for them
+  leader/.style={draw=fgMid, line width=0.3pt},
+  % bars
+  fbar/.style={draw=fgAccent, line width=0.8pt, fill=fgAccent},
+  bbar/.style={draw=fgLine, line width=0.4pt, fill=fgFill},
+  guide/.style={draw=fgLine, line width=0.4pt,
+    dash pattern=on 0.1pt off 1.8pt, line cap=round},
+  span/.style={draw=fgAccent, line width=0.9pt},
+  % text
+  fTag/.style={text=fgAccent, inner sep=1.5pt, font=\figann},
+  bTag/.style={text=fgMid, inner sep=1.5pt, font=\figann},
+  % the single annotation set in black. It marks the point of the middle panel
+  % without joining R2's accent thread, which stays reserved for R2.
+  dTag/.style={text=fgDark, inner sep=1.5pt, font=\figann},
+  fLab/.style={text=fgAccent, inner sep=1.5pt, font=\figann},
+  bLab/.style={text=fgMid, inner sep=1.5pt, font=\figann},
+  head/.style={text=fgDark, inner sep=0pt, font=\figlab}
+]
+
+\path[use as bounding box] (0,-7.55) rectangle (14.48,0.35);
+
+% =================================================================== panels
+% Panel origins. Three arenas of 4.50 cm separated by 0.49 cm, so the row is
+% exactly the 14.48 cm text width. Every panel uses the same local grid of
+% 10 by 11 units at 0.45 cm per unit, so a position means the same thing in all
+% three and the robots can be tracked across the row.
+% Four tasks. R1 takes task 1 at the first epoch, R2 takes task 2 at the first
+% epoch and task 3 at the third, and R3 takes task 4 at the third. At the
+% second epoch R3 is free and task 3 is pending, and R3 is left uncommitted
+% anyway, which is a move a greedy assignment cannot make. R2's own position
+% carries the episode.
+% It starts away from the work, then sits on task 2's carry leg while it
+% executes, then stands at task 2's drop-off, free again. Task 2 is delivered
+% by the third panel and so is no longer drawn there.
+
+% ------------------------------------------------------------------ epoch 1
+\begin{scope}[shift={(0.00,0)}]
+  \node[anchor=south west, head] at (0,0.06) {Epoch 1};
+  \path[arena] (0,-4.95) rectangle (4.50,0);
+  \begin{scope}[shift={(0,-4.95)}, scale=0.45]
+    % pairing lines
+    \draw[blink] (3.7,9.5) -- (8.7,8.4);
+    \draw[flink] (2.4,4.8) -- (4.8,5.9);
+    \draw[bghost] (6.6,1.6) -- (9.1,3.2);
+    \draw[fghost] (6.3,6.8) -- (8.6,7.3);
+    % task 1, pending, R1's
+    \node[bPendP] at (3.7,9.5) {}; \node[bPendD] at (8.7,8.4) {};
+    \node[bTag, anchor=south] at (3.7,9.72) {1};
+    % task 2, pending, R2's
+    \node[fPendP] at (2.4,4.8) {}; \node[fPendD] at (4.8,5.9) {};
+    \node[fTag, anchor=east] at (2.12,4.8) {2};
+    % task 4, not yet released, R3's later
+    \node[bRelP] at (6.6,1.6) {}; \node[bRelD] at (9.1,3.2) {};
+    \node[bTag, anchor=north] at (6.6,1.36) {4};
+    % task 3, not yet released, R2's later
+    \node[fRelP] at (6.3,6.8) {}; \node[fRelD] at (8.6,7.3) {};
+    \node[fTag, anchor=south] at (6.3,7.04) {3};
+    % commitments
+    \draw[bcommit,->] (1.856,9.008) -- (3.371,9.412);
+    \draw[commit,->] (1.703,3.772) -- (2.220,4.535);
+    % the three marks that are named here rather than in the legend
+    \draw[leader] (2.4,5.60) -- (2.4,5.02);
+    \node[bTag, anchor=south] at (2.4,5.60) {pickup};
+    \draw[leader] (4.8,5.30) -- (4.8,5.71);
+    \node[bTag, anchor=north] at (4.8,5.30) {drop-off};
+    \draw[leader] (3.6,1.05) -- (3.6,1.37);
+    \node[bTag, anchor=north] at (3.6,1.05) {available};
+    % robots, all three available and none of them has begun. R1 and R2 are set
+    % in far enough that their labels clear the left edge of the bounding box.
+    \node[bRfree] at (1.45,8.9) {}; \node[bLab, anchor=east] at (1.15,8.9) {R1};
+    \node[fRfree] at (1.45,3.4) {}; \node[fLab, anchor=east] at (1.13,3.4) {R2};
+    \node[bRfree] at (3.6,1.6) {}; \node[bLab, anchor=east] at (3.30,1.6) {R3};
+  \end{scope}
+\end{scope}
+
+% ------------------------------------------------------------------ epoch 2
+\begin{scope}[shift={(4.99,0)}]
+  \node[anchor=south west, head] at (0,0.06) {Epoch 2};
+  \path[arena] (0,-4.95) rectangle (4.50,0);
+  \begin{scope}[shift={(0,-4.95)}, scale=0.45]
+    % carry legs, the only dashed marks. R1 and R2 are on theirs.
+    \draw[bcarry] (3.7,9.5) -- (8.7,8.4);
+    \draw[fcarry] (2.4,4.8) -- (4.8,5.9);
+    % pairing lines
+    \draw[blink] (6.6,1.6) -- (9.1,3.2);
+    \draw[flink] (6.3,6.8) -- (8.6,7.3);
+    % task 1, being carried
+    \node[bCarryP] at (3.7,9.5) {}; \node[bCarryD] at (8.7,8.4) {};
+    % task 2, being carried, R2's
+    \node[fCarryP] at (2.4,4.8) {}; \node[fCarryD] at (4.8,5.9) {};
+    \node[fTag, anchor=east] at (2.12,4.8) {2};
+    % task 4, released this epoch and left waiting
+    \node[bPendP] at (6.6,1.6) {}; \node[bPendD] at (9.1,3.2) {};
+    % task 3, released this epoch and left waiting, R2's later
+    \node[fPendP] at (6.3,6.8) {}; \node[fPendD] at (8.6,7.3) {};
+    \node[fTag, anchor=south] at (6.3,7.04) {3};
+    \node[fTag, anchor=north] at (6.3,6.56) {waits};
+    % no commitment is made this epoch
+    % robots. R1 and R2 sit on their carry legs, so they are mid-execution and
+    % cannot be assigned. R3 is at its start position and available, and is left
+    % uncommitted even though task 3 is pending. Nothing here claims that
+    % holding R3 back is optimal or that it is what any trained policy does.
+    % It is drawn only to show that the decision is available to a dispatcher
+    % and is not available to a greedy assignment.
+    \node[bRbusy] at (5.7,9.06) {}; \node[bLab, anchor=south] at (5.7,9.36) {R1};
+    \node[fRbusy] at (3.48,5.295) {};
+    \node[fLab, anchor=north] at (3.48,5.02) {R2};
+    \node[bRfree] at (3.6,1.6) {}; \node[bLab, anchor=east] at (3.30,1.6) {R3};
+    \draw[leader] (3.6,1.05) -- (3.6,1.37);
+    \node[dTag, anchor=north] at (3.6,1.05) {held back};
+  \end{scope}
+\end{scope}
+
+% ------------------------------------------------------------------ epoch 3
+\begin{scope}[shift={(9.98,0)}]
+  \node[anchor=south west, head] at (0,0.06) {Epoch 3};
+  \path[arena] (0,-4.95) rectangle (4.50,0);
+  \begin{scope}[shift={(0,-4.95)}, scale=0.45]
+    % carry legs
+    \draw[bcarry] (3.7,9.5) -- (8.7,8.4);
+    % pairing lines
+    \draw[blink] (6.6,1.6) -- (9.1,3.2);
+    \draw[flink] (6.3,6.8) -- (8.6,7.3);
+    % task 1, still being carried
+    \node[bCarryP] at (3.7,9.5) {}; \node[bCarryD] at (8.7,8.4) {};
+    % task 2 has been delivered and is no longer drawn
+    % task 4, the task R3 was held back from, taken this epoch by R3
+    \node[bPendP] at (6.6,1.6) {}; \node[bPendD] at (9.1,3.2) {};
+    % task 3, the waiting task, taken this epoch by R2
+    \node[fPendP] at (6.3,6.8) {}; \node[fPendD] at (8.6,7.3) {};
+    \node[fTag, anchor=south] at (6.3,7.04) {3};
+    % commitments. R2 has just delivered, and R3 was free through the last
+    % epoch and takes the task it was held back from.
+    \draw[commit,->] (5.170,6.122) -- (6.035,6.641);
+    \draw[bcommit,->] (4.02,1.6) -- (6.26,1.6);
+    % robots. R1 is on its carry leg. R2 stands at task 2's drop-off, which is
+    % where delivering it left it, and is free again. R3 has not moved.
+    \node[bRbusy] at (7.7,8.62) {}; \node[bLab, anchor=south] at (7.7,8.92) {R1};
+    \node[fRfree] at (4.8,5.9) {}; \node[fLab, anchor=east] at (4.48,5.9) {R2};
+    \node[bRfree] at (3.6,1.6) {}; \node[bLab, anchor=east] at (3.30,1.6) {R3};
+  \end{scope}
+\end{scope}
+
+% ===================================================================== bars
+% Cumulative busy time after the three epochs. R2 has finished one task and is
+% starting a second, so it has done the most. R1 is still on the single long
+% task it took at the first epoch, and R3 stood idle through the first two
+% epochs and has done the least. The bars were scaled down by a common factor
+% to clear the legend column on the right, so their relative lengths are
+% unchanged. The scale is 1.03 cm per unit of busy time.
+\node[anchor=south west, head] at (0,-5.40) {Cumulative busy time};
+
+\path[bbar] (0.85,-5.94) rectangle (8.53,-5.70);
+\node[bLab, anchor=east] at (0.75,-5.82) {R1};
+
+\path[fbar] (0.85,-6.36) rectangle (10.15,-6.12);
+\node[fLab, anchor=east] at (0.75,-6.24) {R2};
+
+\path[bbar] (0.85,-6.78) rectangle (5.75,-6.54);
+\node[bLab, anchor=east] at (0.75,-6.66) {R3};
+
+% the balance term, read off as the distance between the longest and the
+% shortest bar. R2 is the longest, so it is one end of the span.
+\draw[guide] (10.15,-6.36) -- (10.15,-7.14);
+\draw[guide] (5.75,-6.78) -- (5.75,-7.14);
+\draw[span,<->] (5.75,-7.14) -- (10.15,-7.14);
+\node[anchor=north, inner sep=1.5pt, text=fgAccent] at (7.95,-7.20) {balance};
+
+% =================================================================== legend
+% A column of three set beside the bars rather than under them, centred on the
+% middle bar so the two blocks read as one band. The three task states and
+% nothing else. Pickup, drop-off and an available robot are named directly in
+% the first panel instead. The swatches use the accent family, which is the
+% unfaded rendering of every mark in the figure. Only the being-carried swatch
+% is dashed. The column starts at 11.30, clear of the longest bar at 10.15 and
+% of the balance span and its label, which sit lower and further left.
+\draw[fghost] (11.30,-5.74) -- (11.90,-5.74);
+\node[fRelP] at (11.30,-5.74) {}; \node[fRelD] at (11.90,-5.74) {};
+\node[anchor=west, bTag] at (12.05,-5.74) {not yet released};
+
+\draw[flink] (11.30,-6.24) -- (11.90,-6.24);
+\node[fPendP] at (11.30,-6.24) {}; \node[fPendD] at (11.90,-6.24) {};
+\node[anchor=west, bTag] at (12.05,-6.24) {pending};
+
+\draw[fcarry] (11.30,-6.74) -- (11.90,-6.74);
+\node[fCarryP] at (11.30,-6.74) {}; \node[fCarryD] at (11.90,-6.74) {};
+\node[anchor=west, bTag] at (12.05,-6.74) {being carried};
+
+\end{tikzpicture}%

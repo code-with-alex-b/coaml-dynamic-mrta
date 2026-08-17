@@ -1,0 +1,16 @@
+ladder_start_utc=2026-07-30T18:58:14Z
+=== budget 0.010s starting 2026-07-30T18:58:14Z ===
+budget=0.010 rc=0 wall_seconds=64 rows=200
+=== budget 0.025s starting 2026-07-30T18:59:18Z ===
+budget=0.025 rc=0 wall_seconds=116 rows=200
+=== budget 0.050s starting 2026-07-30T19:01:14Z ===
+budget=0.050 rc=0 wall_seconds=193 rows=200
+=== budget 0.100s starting 2026-07-30T19:04:27Z ===
+budget=0.100 rc=0 wall_seconds=332 rows=200
+=== budget 0.250s starting 2026-07-30T19:09:59Z ===
+budget=0.250 rc=0 wall_seconds=626 rows=200
+=== budget 1.0s starting 2026-07-30T19:20:25Z ===
+budget=1.0 rc=0 wall_seconds=1311 rows=200
+=== budget 10.0s starting 2026-07-30T19:42:16Z ===
+budget=10.0 rc=0 wall_seconds=3137 rows=200
+ladder_end_utc=2026-07-30T20:34:33Z

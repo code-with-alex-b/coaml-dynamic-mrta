@@ -1,0 +1,1249 @@
+{
+  "script": "scripts/bootstrap_intervals.py",
+  "git_head": "aca454d0c154705efe6c45c8f9e24700760478e8",
+  "generated_utc": "2026-08-05T13:23:02.017914+00:00",
+  "protocol": {
+    "n_boot": 10000,
+    "seed": 20260731,
+    "interval": "95 per cent percentile, 2.5 and 97.5",
+    "resamples": "instances, not observations within a policy",
+    "pairing": "one index matrix shared by every policy in a replicate",
+    "gap_closure_estimator": "ratio of means, matching the point estimate and methodology section 3.7",
+    "estimator_source": "boot_indices and ci imported from scripts/transfer_table_stats.py"
+  },
+  "n_instances": 200,
+  "seed_min": 11200,
+  "seed_max": 11399,
+  "rows": {
+    "linear_scorer_dm24": {
+      "n": 200,
+      "mean_cost": 185.39479555221806,
+      "mean_cost_ci95": [
+        181.53426357026228,
+        189.3401561614364
+      ],
+      "gap_closure_ratio_of_means_pct": -40.5635613774952,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        -47.13708859370459,
+        -34.34218502868274
+      ],
+      "gap_closure_mean_of_ratios_pct": -49.960250734814565,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        -57.42103938457341,
+        -42.64512530612603
+      ],
+      "paired_diff_vs_learned_hard": 57.20020030128977,
+      "paired_diff_vs_learned_hard_ci95": [
+        54.317245354938464,
+        60.19248453488544
+      ]
+    },
+    "linear_scorer_matched": {
+      "n": 200,
+      "mean_cost": 180.44371452039312,
+      "mean_cost_ci95": [
+        176.712359277833,
+        184.22646927304302
+      ],
+      "gap_closure_ratio_of_means_pct": -32.69240522529071,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        -38.291910933466426,
+        -27.218569894508843
+      ],
+      "gap_closure_mean_of_ratios_pct": -41.95640826324329,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        -49.61635354426174,
+        -34.998116812571425
+      ],
+      "paired_diff_vs_learned_hard": 52.249119269464806,
+      "paired_diff_vs_learned_hard_ci95": [
+        49.48979973973293,
+        54.99423040142903
+      ]
+    },
+    "hungarian_distance_only": {
+      "n": 200,
+      "mean_cost": 159.8796773871267,
+      "mean_cost_ci95": [
+        156.45205468029124,
+        163.2795102170438
+      ],
+      "gap_closure_ratio_of_means_pct": 0.0,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        0.0,
+        0.0
+      ],
+      "gap_closure_mean_of_ratios_pct": 0.0,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        0.0,
+        0.0
+      ],
+      "paired_diff_vs_learned_hard": 31.685082136198407,
+      "paired_diff_vs_learned_hard_ci95": [
+        29.226113218377485,
+        34.08393727588745
+      ]
+    },
+    "hungarian_kappa_weighted": {
+      "n": 200,
+      "mean_cost": 159.10399140728734,
+      "mean_cost_ci95": [
+        155.7209334838915,
+        162.41721075741086
+      ],
+      "gap_closure_ratio_of_means_pct": 1.2331742165287907,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        -0.30127268668828594,
+        2.804397996814628
+      ],
+      "gap_closure_mean_of_ratios_pct": 0.3444957013407689,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        -1.482115524740485,
+        1.9964794349118173
+      ],
+      "paired_diff_vs_learned_hard": 30.909396156359044,
+      "paired_diff_vs_learned_hard_ci95": [
+        28.440686883525224,
+        33.29687768222466
+      ]
+    },
+    "coldstart": {
+      "n": 200,
+      "mean_cost": 153.35681693332816,
+      "mean_cost_ci95": [
+        149.7325730012945,
+        156.9798120765509
+      ],
+      "gap_closure_ratio_of_means_pct": 10.36994807010118,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        6.402070182376899,
+        14.184980040955567
+      ],
+      "gap_closure_mean_of_ratios_pct": 7.106704112646001,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        2.5074761748356558,
+        11.395469361314806
+      ],
+      "paired_diff_vs_learned_hard": 25.16222168239985,
+      "paired_diff_vs_learned_hard_ci95": [
+        22.62273928412153,
+        27.734435746162603
+      ]
+    },
+    "methodone": {
+      "n": 200,
+      "mean_cost": 148.38252535883802,
+      "mean_cost_ci95": [
+        143.63690119906147,
+        153.11815057582857
+      ],
+      "gap_closure_ratio_of_means_pct": 18.278004003286995,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        11.586737325464734,
+        24.517703609797163
+      ],
+      "gap_closure_mean_of_ratios_pct": 17.58450548404413,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        9.061531916962734,
+        26.26039706045289
+      ],
+      "paired_diff_vs_learned_hard": 20.187930107909715,
+      "paired_diff_vs_learned_hard_ci95": [
+        16.193042991976572,
+        24.26650484836257
+      ]
+    },
+    "rh_0.010s": {
+      "n": 200,
+      "mean_cost": 147.0504465601654,
+      "mean_cost_ci95": [
+        143.66699961242915,
+        150.431297785476
+      ],
+      "gap_closure_ratio_of_means_pct": 20.395723378913633,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        17.348709186793478,
+        23.303779486972353
+      ],
+      "gap_closure_mean_of_ratios_pct": 18.020359210089133,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        14.925331523177901,
+        21.081831611707415
+      ],
+      "paired_diff_vs_learned_hard": 18.855851309237107,
+      "paired_diff_vs_learned_hard_ci95": [
+        16.474833341871506,
+        21.21346242775628
+      ]
+    },
+    "rh_0.025s": {
+      "n": 200,
+      "mean_cost": 137.89578523558947,
+      "mean_cost_ci95": [
+        134.61499749872152,
+        141.13804863534153
+      ],
+      "gap_closure_ratio_of_means_pct": 34.949669949996945,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        31.940720752093586,
+        37.86686523449854
+      ],
+      "gap_closure_mean_of_ratios_pct": 33.562069530730966,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        30.34880781017702,
+        36.714905770982725
+      ],
+      "paired_diff_vs_learned_hard": 9.701189984661193,
+      "paired_diff_vs_learned_hard_ci95": [
+        7.349611205072561,
+        12.030892079726483
+      ]
+    },
+    "learned_perturbed": {
+      "n": 200,
+      "mean_cost": 135.14658607801232,
+      "mean_cost_ci95": [
+        132.18211750611147,
+        138.0876441755714
+      ],
+      "gap_closure_ratio_of_means_pct": 39.32030652889831,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        36.51516759028007,
+        42.04940577401542
+      ],
+      "gap_closure_mean_of_ratios_pct": 37.600384026071325,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        33.40147682482263,
+        42.668777334366574
+      ],
+      "paired_diff_vs_learned_hard": 6.951990827084026,
+      "paired_diff_vs_learned_hard_ci95": [
+        5.217396796306737,
+        8.602445924836935
+      ]
+    },
+    "rh_0.050s": {
+      "n": 200,
+      "mean_cost": 129.86242184693592,
+      "mean_cost_ci95": [
+        126.73646043153222,
+        132.97811155957476
+      ],
+      "gap_closure_ratio_of_means_pct": 47.720993475717506,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        45.04381817158766,
+        50.32051222198535
+      ],
+      "gap_closure_mean_of_ratios_pct": 46.04884517969295,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        43.07091133265107,
+        48.95938272738041
+      ],
+      "paired_diff_vs_learned_hard": 1.6678265960076017,
+      "paired_diff_vs_learned_hard_ci95": [
+        -0.5460080984054572,
+        3.8739099194649365
+      ]
+    },
+    "learned_hard": {
+      "n": 200,
+      "mean_cost": 128.19459525092827,
+      "mean_cost_ci95": [
+        125.1286673478436,
+        131.28941370020323
+      ],
+      "gap_closure_ratio_of_means_pct": 50.372479784988634,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        47.44511773704044,
+        53.19077099489537
+      ],
+      "gap_closure_mean_of_ratios_pct": 49.921450618893644,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        45.3141724038145,
+        55.74791190704275
+      ],
+      "paired_diff_vs_learned_hard": 0.0,
+      "paired_diff_vs_learned_hard_ci95": [
+        0.0,
+        0.0
+      ]
+    },
+    "rh_0.100s": {
+      "n": 200,
+      "mean_cost": 126.80322853357025,
+      "mean_cost_ci95": [
+        123.9008836479707,
+        129.81959324108922
+      ],
+      "gap_closure_ratio_of_means_pct": 52.58445422590552,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        49.91154182704043,
+        55.137884269236224
+      ],
+      "gap_closure_mean_of_ratios_pct": 51.218333725520736,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        48.085895254746234,
+        54.25087741572653
+      ],
+      "paired_diff_vs_learned_hard": -1.3913667173580355,
+      "paired_diff_vs_learned_hard_ci95": [
+        -3.2887334331520157,
+        0.541597698561492
+      ]
+    },
+    "rh_0.250s": {
+      "n": 200,
+      "mean_cost": 120.34165481905895,
+      "mean_cost_ci95": [
+        117.57979129515527,
+        123.10638934402243
+      ],
+      "gap_closure_ratio_of_means_pct": 62.85696953498171,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        60.63497609630455,
+        65.01016139076026
+      ],
+      "gap_closure_mean_of_ratios_pct": 62.392365198431335,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        59.373101006465845,
+        65.77871384830485
+      ],
+      "paired_diff_vs_learned_hard": -7.852940431869347,
+      "paired_diff_vs_learned_hard_ci95": [
+        -9.822064914621432,
+        -5.918563062509162
+      ]
+    },
+    "rh_1.0s": {
+      "n": 200,
+      "mean_cost": 113.82151629142518,
+      "mean_cost_ci95": [
+        111.35979052930705,
+        116.34020579115784
+      ],
+      "gap_closure_ratio_of_means_pct": 73.22259032670874,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        71.1229167855309,
+        75.19575712427965
+      ],
+      "gap_closure_mean_of_ratios_pct": 73.6078676527185,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        70.2134278784922,
+        78.06068339015195
+      ],
+      "paired_diff_vs_learned_hard": -14.37307895950311,
+      "paired_diff_vs_learned_hard_ci95": [
+        -16.189332714413457,
+        -12.582981975625051
+      ]
+    },
+    "rh_10.0s": {
+      "n": 200,
+      "mean_cost": 112.14619224190432,
+      "mean_cost_ci95": [
+        109.79179812938912,
+        114.59158767737566
+      ],
+      "gap_closure_ratio_of_means_pct": 75.8859959778301,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        73.7328881409055,
+        77.8813615347439
+      ],
+      "gap_closure_mean_of_ratios_pct": 76.36528454348638,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        72.9326618302119,
+        80.81581644273137
+      ],
+      "paired_diff_vs_learned_hard": -16.048403009023975,
+      "paired_diff_vs_learned_hard_ci95": [
+        -18.044153898791464,
+        -14.101105153779653
+      ]
+    },
+    "milp": {
+      "n": 200,
+      "mean_cost": 96.97810440234622,
+      "mean_cost_ci95": [
+        94.85339135604576,
+        99.06944523479336
+      ],
+      "gap_closure_ratio_of_means_pct": 100.0,
+      "gap_closure_ratio_of_means_ci95_pct": [
+        100.0,
+        100.0
+      ],
+      "gap_closure_mean_of_ratios_pct": 100.0,
+      "gap_closure_mean_of_ratios_ci95_pct": [
+        100.0,
+        100.0
+      ],
+      "paired_diff_vs_learned_hard": -31.21649084858209,
+      "paired_diff_vs_learned_hard_ci95": [
+        -33.03194668723095,
+        -29.416807317263153
+      ]
+    }
+  },
+  "method_one_over_165_serving": {
+    "n": 165,
+    "mean_cost": 154.23762484983877,
+    "mean_cost_ci95": [
+      150.128286593425,
+      158.42947134314406
+    ],
+    "gap_closure_ratio_of_means_pct": 13.817948972156591,
+    "gap_closure_ratio_of_means_ci95_pct": [
+      7.7767362531435165,
+      19.287913921944014
+    ],
+    "gap_closure_mean_of_ratios_pct": 9.447398493411296,
+    "gap_closure_mean_of_ratios_ci95_pct": [
+      2.7266392685685163,
+      15.549863980974616
+    ],
+    "paired_diff_vs_learned_hard": 22.80107099970529,
+    "paired_diff_vs_learned_hard_ci95": [
+      19.287064411757314,
+      26.63694369851587
+    ]
+  },
+  "comparison": {
+    "per_row": {
+      "linear_scorer_dm24": {
+        "mean_cost": {
+          "published_point": 185.395,
+          "regenerated_point": 185.39479555221806,
+          "point_abs_diff": 0.0002044477819538315,
+          "published_ci": [
+            181.534,
+            189.34
+          ],
+          "regenerated_ci": [
+            181.53426357026228,
+            189.3401561614364
+          ],
+          "ci_abs_diff_low": 0.0002635702622910685,
+          "ci_abs_diff_high": 0.00015616143639363145,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": -40.564,
+          "regenerated_point": -40.5635613774952,
+          "point_abs_diff": 0.0004386225048023107,
+          "published_ci": [
+            -47.14,
+            -34.34
+          ],
+          "regenerated_ci": [
+            -47.13708859370459,
+            -34.34218502868274
+          ],
+          "ci_abs_diff_low": 0.0029114062954107567,
+          "ci_abs_diff_high": 0.002185028682738732,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 57.2,
+          "regenerated_point": 57.20020030128977,
+          "point_abs_diff": 0.0002003012897660028,
+          "published_ci": [
+            54.317,
+            60.192
+          ],
+          "regenerated_ci": [
+            54.317245354938464,
+            60.19248453488544
+          ],
+          "ci_abs_diff_low": 0.00024535493846400414,
+          "ci_abs_diff_high": 0.0004845348854374265,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "linear_scorer_matched": {
+        "mean_cost": {
+          "published_point": 180.444,
+          "regenerated_point": 180.44371452039312,
+          "point_abs_diff": 0.00028547960687319573,
+          "published_ci": [
+            176.712,
+            184.226
+          ],
+          "regenerated_ci": [
+            176.712359277833,
+            184.22646927304302
+          ],
+          "ci_abs_diff_low": 0.0003592778330130386,
+          "ci_abs_diff_high": 0.000469273043023577,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": -32.692,
+          "regenerated_point": -32.69240522529071,
+          "point_abs_diff": 0.00040522529071296276,
+          "published_ci": [
+            -38.29,
+            -27.22
+          ],
+          "regenerated_ci": [
+            -38.291910933466426,
+            -27.218569894508843
+          ],
+          "ci_abs_diff_low": 0.0019109334664264566,
+          "ci_abs_diff_high": 0.0014301054911562971,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 52.249,
+          "regenerated_point": 52.249119269464806,
+          "point_abs_diff": 0.00011926946480400602,
+          "published_ci": [
+            49.49,
+            54.994
+          ],
+          "regenerated_ci": [
+            49.48979973973293,
+            54.99423040142903
+          ],
+          "ci_abs_diff_low": 0.0002002602670714282,
+          "ci_abs_diff_high": 0.00023040142902885918,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": {
+          "published_point": 159.88,
+          "regenerated_point": 159.8796773871267,
+          "point_abs_diff": 0.0003226128733047062,
+          "published_ci": [
+            156.452,
+            163.28
+          ],
+          "regenerated_ci": [
+            156.45205468029124,
+            163.2795102170438
+          ],
+          "ci_abs_diff_low": 5.468029124244822e-05,
+          "ci_abs_diff_high": 0.0004897829562082734,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 0.0,
+          "regenerated_point": 0.0,
+          "point_abs_diff": 0.0,
+          "published_ci": null,
+          "regenerated_ci": [
+            0.0,
+            0.0
+          ],
+          "ci_reproduces": null
+        },
+        "paired_diff": {
+          "published_point": 31.685,
+          "regenerated_point": 31.685082136198407,
+          "point_abs_diff": 8.213619840802266e-05,
+          "published_ci": [
+            29.226,
+            34.084
+          ],
+          "regenerated_ci": [
+            29.226113218377485,
+            34.08393727588745
+          ],
+          "ci_abs_diff_low": 0.00011321837748567987,
+          "ci_abs_diff_high": 6.27241125528144e-05,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "hungarian_kappa_weighted": {
+        "mean_cost": {
+          "published_point": 159.104,
+          "regenerated_point": 159.10399140728734,
+          "point_abs_diff": 8.5927126747265e-06,
+          "published_ci": [
+            155.721,
+            162.417
+          ],
+          "regenerated_ci": [
+            155.7209334838915,
+            162.41721075741086
+          ],
+          "ci_abs_diff_low": 6.651610848962264e-05,
+          "ci_abs_diff_high": 0.00021075741085496702,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 1.233,
+          "regenerated_point": 1.2331742165287907,
+          "point_abs_diff": 0.0001742165287905717,
+          "published_ci": [
+            -0.3,
+            2.8
+          ],
+          "regenerated_ci": [
+            -0.30127268668828594,
+            2.804397996814628
+          ],
+          "ci_abs_diff_low": 0.001272686688285951,
+          "ci_abs_diff_high": 0.004397996814628158,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 30.909,
+          "regenerated_point": 30.909396156359044,
+          "point_abs_diff": 0.0003961563590451078,
+          "published_ci": [
+            28.441,
+            33.297
+          ],
+          "regenerated_ci": [
+            28.440686883525224,
+            33.29687768222466
+          ],
+          "ci_abs_diff_low": 0.00031311647477494375,
+          "ci_abs_diff_high": 0.00012231777533600052,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "coldstart": {
+        "mean_cost": {
+          "published_point": 153.357,
+          "regenerated_point": 153.35681693332816,
+          "point_abs_diff": 0.00018306667183765057,
+          "published_ci": [
+            149.733,
+            156.98
+          ],
+          "regenerated_ci": [
+            149.7325730012945,
+            156.9798120765509
+          ],
+          "ci_abs_diff_low": 0.0004269987055067759,
+          "ci_abs_diff_high": 0.00018792344909002168,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 10.37,
+          "regenerated_point": 10.36994807010118,
+          "point_abs_diff": 5.19298988184147e-05,
+          "published_ci": [
+            6.4,
+            14.18
+          ],
+          "regenerated_ci": [
+            6.402070182376899,
+            14.184980040955567
+          ],
+          "ci_abs_diff_low": 0.0020701823768982663,
+          "ci_abs_diff_high": 0.004980040955567588,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 25.162,
+          "regenerated_point": 25.16222168239985,
+          "point_abs_diff": 0.00022168239985020932,
+          "published_ci": [
+            22.623,
+            27.734
+          ],
+          "regenerated_ci": [
+            22.62273928412153,
+            27.734435746162603
+          ],
+          "ci_abs_diff_low": 0.0002607158784719843,
+          "ci_abs_diff_high": 0.00043574616260144694,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "methodone": {
+        "mean_cost": {
+          "published_point": 148.383,
+          "regenerated_point": 148.38252535883802,
+          "point_abs_diff": 0.0004746411619862556,
+          "published_ci": [
+            143.637,
+            153.118
+          ],
+          "regenerated_ci": [
+            143.63690119906147,
+            153.11815057582857
+          ],
+          "ci_abs_diff_low": 9.880093853098515e-05,
+          "ci_abs_diff_high": 0.0001505758285702541,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 18.278,
+          "regenerated_point": 18.278004003286995,
+          "point_abs_diff": 4.003286996123734e-06,
+          "published_ci": [
+            11.59,
+            24.52
+          ],
+          "regenerated_ci": [
+            11.586737325464734,
+            24.517703609797163
+          ],
+          "ci_abs_diff_low": 0.0032626745352661857,
+          "ci_abs_diff_high": 0.0022963902028365624,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 20.188,
+          "regenerated_point": 20.187930107909715,
+          "point_abs_diff": 6.989209028418486e-05,
+          "published_ci": [
+            16.193,
+            24.267
+          ],
+          "regenerated_ci": [
+            16.193042991976572,
+            24.26650484836257
+          ],
+          "ci_abs_diff_low": 4.2991976570760926e-05,
+          "ci_abs_diff_high": 0.0004951516374305243,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_0.010s": {
+        "mean_cost": {
+          "published_point": 147.05,
+          "regenerated_point": 147.0504465601654,
+          "point_abs_diff": 0.000446560165386245,
+          "published_ci": [
+            143.667,
+            150.431
+          ],
+          "regenerated_ci": [
+            143.66699961242915,
+            150.431297785476
+          ],
+          "ci_abs_diff_low": 3.8757085008001013e-07,
+          "ci_abs_diff_high": 0.0002977854759933507,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 20.396,
+          "regenerated_point": 20.395723378913633,
+          "point_abs_diff": 0.0002766210863676122,
+          "published_ci": [
+            17.35,
+            23.3
+          ],
+          "regenerated_ci": [
+            17.348709186793478,
+            23.303779486972353
+          ],
+          "ci_abs_diff_low": 0.0012908132065234668,
+          "ci_abs_diff_high": 0.0037794869723519753,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 18.856,
+          "regenerated_point": 18.855851309237107,
+          "point_abs_diff": 0.00014869076289514283,
+          "published_ci": [
+            16.475,
+            21.213
+          ],
+          "regenerated_ci": [
+            16.474833341871506,
+            21.21346242775628
+          ],
+          "ci_abs_diff_low": 0.0001666581284958113,
+          "ci_abs_diff_high": 0.0004624277562790269,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_0.025s": {
+        "mean_cost": {
+          "published_point": 137.896,
+          "regenerated_point": 137.89578523558947,
+          "point_abs_diff": 0.0002147644105150448,
+          "published_ci": [
+            134.615,
+            141.138
+          ],
+          "regenerated_ci": [
+            134.61499749872152,
+            141.13804863534153
+          ],
+          "ci_abs_diff_low": 2.5012784874434146e-06,
+          "ci_abs_diff_high": 4.8635341528324716e-05,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 34.95,
+          "regenerated_point": 34.949669949996945,
+          "point_abs_diff": 0.0003300500030576359,
+          "published_ci": [
+            31.94,
+            37.87
+          ],
+          "regenerated_ci": [
+            31.940720752093586,
+            37.86686523449854
+          ],
+          "ci_abs_diff_low": 0.0007207520935850198,
+          "ci_abs_diff_high": 0.003134765501457082,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 9.701,
+          "regenerated_point": 9.701189984661193,
+          "point_abs_diff": 0.00018998466119235502,
+          "published_ci": [
+            7.35,
+            12.031
+          ],
+          "regenerated_ci": [
+            7.349611205072561,
+            12.030892079726483
+          ],
+          "ci_abs_diff_low": 0.000388794927438596,
+          "ci_abs_diff_high": 0.00010792027351769207,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "learned_perturbed": {
+        "mean_cost": {
+          "published_point": 135.147,
+          "regenerated_point": 135.14658607801232,
+          "point_abs_diff": 0.0004139219876719835,
+          "published_ci": [
+            132.182,
+            138.088
+          ],
+          "regenerated_ci": [
+            132.18211750611147,
+            138.0876441755714
+          ],
+          "ci_abs_diff_low": 0.00011750611147931522,
+          "ci_abs_diff_high": 0.000355824428595497,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 39.32,
+          "regenerated_point": 39.32030652889831,
+          "point_abs_diff": 0.0003065288983066239,
+          "published_ci": [
+            36.52,
+            42.05
+          ],
+          "regenerated_ci": [
+            36.51516759028007,
+            42.04940577401542
+          ],
+          "ci_abs_diff_low": 0.004832409719931263,
+          "ci_abs_diff_high": 0.000594225984578145,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 6.952,
+          "regenerated_point": 6.951990827084026,
+          "point_abs_diff": 9.172915974353657e-06,
+          "published_ci": [
+            5.217,
+            8.602
+          ],
+          "regenerated_ci": [
+            5.217396796306737,
+            8.602445924836935
+          ],
+          "ci_abs_diff_low": 0.0003967963067372793,
+          "ci_abs_diff_high": 0.00044592483693506324,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_0.050s": {
+        "mean_cost": {
+          "published_point": 129.862,
+          "regenerated_point": 129.86242184693592,
+          "point_abs_diff": 0.0004218469359216215,
+          "published_ci": [
+            126.736,
+            132.978
+          ],
+          "regenerated_ci": [
+            126.73646043153222,
+            132.97811155957476
+          ],
+          "ci_abs_diff_low": 0.00046043153221830835,
+          "ci_abs_diff_high": 0.00011155957474784373,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 47.721,
+          "regenerated_point": 47.720993475717506,
+          "point_abs_diff": 6.524282490261157e-06,
+          "published_ci": [
+            45.04,
+            50.32
+          ],
+          "regenerated_ci": [
+            45.04381817158766,
+            50.32051222198535
+          ],
+          "ci_abs_diff_low": 0.0038181715876604017,
+          "ci_abs_diff_high": 0.0005122219853461729,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 1.668,
+          "regenerated_point": 1.6678265960076017,
+          "point_abs_diff": 0.00017340399239818005,
+          "published_ci": [
+            -0.546,
+            3.874
+          ],
+          "regenerated_ci": [
+            -0.5460080984054572,
+            3.8739099194649365
+          ],
+          "ci_abs_diff_low": 8.098405457124258e-06,
+          "ci_abs_diff_high": 9.008053506365243e-05,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "learned_hard": {
+        "mean_cost": {
+          "published_point": 128.195,
+          "regenerated_point": 128.19459525092827,
+          "point_abs_diff": 0.0004047490717198343,
+          "published_ci": [
+            125.129,
+            131.289
+          ],
+          "regenerated_ci": [
+            125.1286673478436,
+            131.28941370020323
+          ],
+          "ci_abs_diff_low": 0.0003326521564019913,
+          "ci_abs_diff_high": 0.0004137002032393866,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 50.372,
+          "regenerated_point": 50.372479784988634,
+          "point_abs_diff": 0.0004797849886344352,
+          "published_ci": [
+            47.45,
+            53.19
+          ],
+          "regenerated_ci": [
+            47.44511773704044,
+            53.19077099489537
+          ],
+          "ci_abs_diff_low": 0.004882262959561956,
+          "ci_abs_diff_high": 0.000770994895368915,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": 0.0,
+          "regenerated_point": 0.0,
+          "point_abs_diff": 0.0,
+          "published_ci": null,
+          "regenerated_ci": [
+            0.0,
+            0.0
+          ],
+          "ci_reproduces": null
+        }
+      },
+      "rh_0.100s": {
+        "mean_cost": {
+          "published_point": 126.803,
+          "regenerated_point": 126.80322853357025,
+          "point_abs_diff": 0.0002285335702509883,
+          "published_ci": [
+            123.901,
+            129.82
+          ],
+          "regenerated_ci": [
+            123.9008836479707,
+            129.81959324108922
+          ],
+          "ci_abs_diff_low": 0.00011635202929483057,
+          "ci_abs_diff_high": 0.00040675891077057713,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 52.584,
+          "regenerated_point": 52.58445422590552,
+          "point_abs_diff": 0.00045422590551424946,
+          "published_ci": [
+            49.91,
+            55.14
+          ],
+          "regenerated_ci": [
+            49.91154182704043,
+            55.137884269236224
+          ],
+          "ci_abs_diff_low": 0.0015418270404339296,
+          "ci_abs_diff_high": 0.002115730763776469,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": -1.391,
+          "regenerated_point": -1.3913667173580355,
+          "point_abs_diff": 0.00036671735803550654,
+          "published_ci": [
+            -3.289,
+            0.542
+          ],
+          "regenerated_ci": [
+            -3.2887334331520157,
+            0.541597698561492
+          ],
+          "ci_abs_diff_low": 0.00026656684798442853,
+          "ci_abs_diff_high": 0.000402301438508057,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_0.250s": {
+        "mean_cost": {
+          "published_point": 120.342,
+          "regenerated_point": 120.34165481905895,
+          "point_abs_diff": 0.0003451809410535134,
+          "published_ci": [
+            117.58,
+            123.106
+          ],
+          "regenerated_ci": [
+            117.57979129515527,
+            123.10638934402243
+          ],
+          "ci_abs_diff_low": 0.0002087048447236839,
+          "ci_abs_diff_high": 0.00038934402243739896,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 62.857,
+          "regenerated_point": 62.85696953498171,
+          "point_abs_diff": 3.0465018291181423e-05,
+          "published_ci": [
+            60.63,
+            65.01
+          ],
+          "regenerated_ci": [
+            60.63497609630455,
+            65.01016139076026
+          ],
+          "ci_abs_diff_low": 0.004976096304545763,
+          "ci_abs_diff_high": 0.00016139076025467602,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": -7.853,
+          "regenerated_point": -7.852940431869347,
+          "point_abs_diff": 5.9568130652998263e-05,
+          "published_ci": [
+            -9.822,
+            -5.919
+          ],
+          "regenerated_ci": [
+            -9.822064914621432,
+            -5.918563062509162
+          ],
+          "ci_abs_diff_low": 6.491462143287663e-05,
+          "ci_abs_diff_high": 0.0004369374908375079,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_1.0s": {
+        "mean_cost": {
+          "published_point": 113.822,
+          "regenerated_point": 113.82151629142518,
+          "point_abs_diff": 0.00048370857481927487,
+          "published_ci": [
+            111.36,
+            116.34
+          ],
+          "regenerated_ci": [
+            111.35979052930705,
+            116.34020579115784
+          ],
+          "ci_abs_diff_low": 0.0002094706929511858,
+          "ci_abs_diff_high": 0.00020579115783903035,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 73.223,
+          "regenerated_point": 73.22259032670874,
+          "point_abs_diff": 0.0004096732912586276,
+          "published_ci": [
+            71.12,
+            75.2
+          ],
+          "regenerated_ci": [
+            71.1229167855309,
+            75.19575712427965
+          ],
+          "ci_abs_diff_low": 0.0029167855308998014,
+          "ci_abs_diff_high": 0.00424287572035098,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": -14.373,
+          "regenerated_point": -14.37307895950311,
+          "point_abs_diff": 7.89595031100987e-05,
+          "published_ci": [
+            -16.189,
+            -12.583
+          ],
+          "regenerated_ci": [
+            -16.189332714413457,
+            -12.582981975625051
+          ],
+          "ci_abs_diff_low": 0.000332714413456614,
+          "ci_abs_diff_high": 1.802437494902165e-05,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "rh_10.0s": {
+        "mean_cost": {
+          "published_point": 112.146,
+          "regenerated_point": 112.14619224190432,
+          "point_abs_diff": 0.00019224190431543775,
+          "published_ci": [
+            109.792,
+            114.592
+          ],
+          "regenerated_ci": [
+            109.79179812938912,
+            114.59158767737566
+          ],
+          "ci_abs_diff_low": 0.00020187061087995062,
+          "ci_abs_diff_high": 0.00041232262434220956,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 75.886,
+          "regenerated_point": 75.8859959778301,
+          "point_abs_diff": 4.022169889594807e-06,
+          "published_ci": [
+            73.73,
+            77.88
+          ],
+          "regenerated_ci": [
+            73.7328881409055,
+            77.8813615347439
+          ],
+          "ci_abs_diff_low": 0.002888140905497494,
+          "ci_abs_diff_high": 0.0013615347439071002,
+          "ci_reproduces": true,
+          "tolerance": 0.0050000000010000005
+        },
+        "paired_diff": {
+          "published_point": -16.048,
+          "regenerated_point": -16.048403009023975,
+          "point_abs_diff": 0.0004030090239766082,
+          "published_ci": [
+            -18.044,
+            -14.101
+          ],
+          "regenerated_ci": [
+            -18.044153898791464,
+            -14.101105153779653
+          ],
+          "ci_abs_diff_low": 0.000153898791463547,
+          "ci_abs_diff_high": 0.00010515377965170103,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      },
+      "milp": {
+        "mean_cost": {
+          "published_point": 96.978,
+          "regenerated_point": 96.97810440234622,
+          "point_abs_diff": 0.0001044023462242194,
+          "published_ci": [
+            94.853,
+            99.069
+          ],
+          "regenerated_ci": [
+            94.85339135604576,
+            99.06944523479336
+          ],
+          "ci_abs_diff_low": 0.0003913560457675658,
+          "ci_abs_diff_high": 0.00044523479336078253,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        },
+        "gap_closure": {
+          "published_point": 100.0,
+          "regenerated_point": 100.0,
+          "point_abs_diff": 0.0,
+          "published_ci": null,
+          "regenerated_ci": [
+            100.0,
+            100.0
+          ],
+          "ci_reproduces": null
+        },
+        "paired_diff": {
+          "published_point": -31.216,
+          "regenerated_point": -31.21649084858209,
+          "point_abs_diff": 0.0004908485820891428,
+          "published_ci": [
+            -33.032,
+            -29.417
+          ],
+          "regenerated_ci": [
+            -33.03194668723095,
+            -29.416807317263153
+          ],
+          "ci_abs_diff_low": 5.331276904740889e-05,
+          "ci_abs_diff_high": 0.00019268273684858173,
+          "ci_reproduces": true,
+          "tolerance": 0.000500000001
+        }
+      }
+    },
+    "largest_ci_discrepancy": {
+      "value": 0.004980040955567588,
+      "where": "coldstart/gap_closure/high"
+    }
+  },
+  "seed_trial": null
+}

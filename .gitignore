@@ -1,0 +1,15 @@
+# Gurobi licences must never be committed
+*.lic
+gurobi.env
+
+# Python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# macOS
+.DS_Store
+
+# Local outputs
+notebooks/output/
+notebooks/scratch/

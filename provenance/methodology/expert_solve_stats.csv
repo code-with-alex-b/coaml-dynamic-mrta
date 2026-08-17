@@ -1,0 +1,18 @@
+metric,value
+n_instances,1000
+mip_time_limit_seconds,60
+mip_gap_target,0.01
+total_solve_time_seconds,58977.074361
+total_solve_time_hours,16.382521
+n_terminating_at_time_limit,978
+n_proven_optimal,22
+median_solve_time_seconds,60.008288
+mean_solve_time_seconds,58.977074
+min_solve_time_seconds,0.397570
+max_solve_time_seconds,60.373079
+mean_residual_mip_gap,0.242380
+mean_residual_mip_gap_pct,24.2380
+solves_were_sequential,true
+source_cache,cache/training_set_il_v4/train
+solve_times_reused_from,cache/training_set_il_v3
+reuse_check,verified identical on 1000 shared seeds

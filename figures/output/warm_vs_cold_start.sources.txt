@@ -1,0 +1,57 @@
+Figure: warm_vs_cold_start.pdf
+Written: 2026-08-17 11:11:42 UTC
+
+Source files and sha256
+-----------------------
+provenance/figure41_training/series_warm_start_training.csv
+  bytes  41770
+  sha256 b64a2eb2aeb91f0348ad3ae593c82230216632fa1b3a1f82a4bd9789c226f849
+provenance/figure41_training/series_cold_start_training.csv
+  bytes  41809
+  sha256 d45875de74d81bb77acc2d414e84d777feee16c31d89df167836519d9c87f86f
+scripts/regenerate/export_series_and_logs.py
+  bytes  26903
+  sha256 29c64e0ab00cc1d90aa09d1c8c5648535daf44f891cda7469cb4a62acdf42ecb
+src/training/method_two_trainer.py
+  bytes  36646
+  sha256 4a0148dc28437e05fa3441d4f7d3123199884b4ec587d7e22ae34eb38ae86a54
+src/training/rollout_worker.py
+  bytes  11559
+  sha256 812c96c09641aca40fb9a41aff383f7aeebda3d38139eccf4cb85513b42afc64
+src/simulator/dynamic_simulator.py
+  bytes  13063
+  sha256 0b41c126594915b4794e9e35744d3de8b432815edf978f4d7750dad3cfbad2da
+figures/style.py
+  bytes  6222
+  sha256 f1219ca27d7c7aab52838caa8249dc83d2f460676fb04ca964d38585eed95c9b
+figures/fig_warm_vs_cold.py
+  bytes  14682
+  sha256 6c02e7e3f51c80652173e6fc43312c4931e9fc8ea408691c549f879c2b932eaa
+
+Values
+------
+steps covered: 1 to 1000, both runs, both series, no gaps
+rollouts per step: 2560 (batch 128 instances, RLOO k=20)
+warm cost at steps 100/500/1000: 151.6278, 138.4152, 132.3106
+cold cost at steps 100/500/1000: 161.4825, 157.6090, 152.3877
+warm grad norm at steps 100/500/1000: 57.8518, 149.5672, 121.0048
+cold grad norm at steps 100/500/1000: 11.5525, 148.5744, 1645.7241
+warm cost first-difference std: 2.5464
+cold cost first-difference std: 2.7553
+warm residual std about rolling median: 1.7684
+cold residual std about rolling median: 1.9444
+warm cost fall, step 1 to 1000: 21.5633
+cold cost fall, step 1 to 1000: 11.6294
+steps clipped at 1.0: warm 1000/1000, cold 1000/1000
+
+Notes
+-----
+Runs plotted. Warm is the production run whose best checkpoint is checkpoints/sweep_G_v4warmstart_best.pt (step 750); the per-step histories originate in its rolling checkpoint sweep_G_v4warmstart.pt. Cold is DM-17, best checkpoint sweep_G_coldstart_best.pt (step 975), rolling checkpoint sweep_G_coldstart.pt. Rolling and best checkpoints carry byte-identical configs in each run, so the pairing is exact.
+Source of the plotted series. This figure reads two tracked CSVs, provenance/figure41_training/series_{warm,cold}_start_training.csv, exported from the two rolling checkpoints by scripts/regenerate/export_series_and_logs.py at full float precision. The exported values are bitwise identical to the checkpoint arrays, verified by numpy array_equal on both series of both arms, so this figure is the published one and no checkpoint is opened to build it.
+Both panels smoothed: centred rolling median over 51 steps, window shrunk at the two ends. The raw series is drawn faint behind the smoothed line for both runs in both panels, so nothing is hidden. The cost panel needs it because the cold run's total fall of 11.63 units is comparable to the 1.9 unit per-step sampling noise; the gradient panel needs it because 1000 raw points per run overplot into two solid bands.
+cost_history is metrics['mean_cost'], the unweighted mean over the 2560 rollouts of that step's minibatch of the combined episode cost w_dist*D + w_make*M + w_bal*B from DynamicMRTASimulator.compute_cost. Rollouts that fail to serve every task are included in that mean and are NOT penalised for the tasks they dropped: the cost is computed over the commitments actually made, so an episode that drops tasks contributes less distance. The runs predate eval_history, so the training-time serve-all rate cannot be recovered from these checkpoints.
+grad_norm_history is the value returned by clip_grad_norm_ in rollout_worker.reduce_and_apply, which is the total norm of the summed worker gradient BEFORE clipping. Both runs used gradient_clip_norm 1.0 and every one of the 1000 steps exceeded it, so clipping was active on every step of both runs. The threshold is not drawn in panel b: the smallest observed norm is 6.31, two decades above the threshold, so the reference line would have pushed the data into the top third of the panel. The y limits follow the data and the clipped-step counts are recorded under Values above instead.
+Comparability. Both runs draw from the same 1000 instance training cache (cache/training_set_il_v3/train), batch_size 128, baseline_mode rloo with rloo_k 20, so both series are means over 2560 rollouts per point. Configs differ only in warm_start_from, resume_from, start_step, checkpoint_path and best_serve_all_floor, none of which changes what cost_history measures.
+Minibatch selection is unseeded (random.sample in src/training/method_two_trainer.py, DM-44), so the two runs see different instance samples at each step. At 2560 rollouts per point the resulting per-step noise is about 1.9 units against a between-run separation of about 22 units at step 1000, so the sampling difference is roughly a tenth of the effect and unbiased in either direction.
+The cold run was resumed once at step 801 (start_step 801, resume_from its own rolling checkpoint). The trainer reloads the stored history and sets start_step to the stored step plus one, so the two segments concatenate without gap or duplication. Both histories hold exactly 1000 entries against a final step of 1000, which is only possible if every step contributed exactly one entry.
+No validation gap closure is plotted in this figure.

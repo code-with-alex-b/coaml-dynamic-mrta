@@ -1,0 +1,39 @@
+{
+  "sweep_name": "bk_grid_v1",
+  "shared": {
+    "warm_start": "checkpoints/il_method_one_v3.pt",
+    "train_cache": "cache/training_set_il_v3/train",
+    "val_cache": "cache/training_set_il_v3/val",
+    "baseline_mode": "rloo",
+    "epsilon": 1.0,
+    "learning_rate": 0.001,
+    "gradient_clip_norm": 10.0,
+    "steps": 500,
+    "checkpoint_every": 25,
+    "eval_seed": 42,
+    "eval_instances": 200
+  },
+  "configs": [
+    {"id": "A", "k": 5,  "batch": 32, "bk": 160},
+    {"id": "B", "k": 10, "batch": 16, "bk": 160},
+    {"id": "C", "k": 10, "batch": 32, "bk": 320},
+    {"id": "D", "k": 20, "batch": 16, "bk": 320},
+    {"id": "E", "k": 10, "batch": 64, "bk": 640},
+    {"id": "F", "k": 20, "batch": 32, "bk": 640},
+    {"id": "G", "k": 20, "batch": 64, "bk": 1280},
+    {"id": "E_test", "k": 10, "batch": 64, "bk": 640, "lr": 0.0001, "steps": 200},
+    {"id": "G_v4warmstart", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0001, "grad_clip": 1.0, "epsilon_end": 0.5, "steps": 1000, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-B",      "k": 20, "batch": 64,  "bk": 1280, "lr": 0.0001, "grad_clip": 1.0, "epsilon_end": 0.5,  "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-C",      "k": 10, "batch": 128, "bk": 1280, "lr": 0.0001, "grad_clip": 1.0, "epsilon_end": 0.5,  "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-lr2",    "k": 20, "batch": 128, "bk": 2560, "lr": 0.0002, "grad_clip": 1.0, "epsilon_end": 0.5,  "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-eps035", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0001, "grad_clip": 1.0, "epsilon_end": 0.35, "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-lr15", "k": 20, "batch": 128, "bk": 2560, "lr": 0.00015, "grad_clip": 1.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-lr3",  "k": 20, "batch": 128, "bk": 2560, "lr": 0.0003,  "grad_clip": 1.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 1000, "steps": 300, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "v4-lr2-full", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0002, "grad_clip": 1.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 1000, "steps": 1000, "warm_start": "checkpoints/il_method_one_v4_best.pt"},
+    {"id": "CS1", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0001, "grad_clip": 10.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 300, "steps": 300},
+    {"id": "CS2", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0005, "grad_clip": 10.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 300, "steps": 300},
+    {"id": "CS3", "k": 20, "batch": 128, "bk": 2560, "lr": 0.001,  "grad_clip": 10.0, "epsilon_end": 0.5, "epsilon_anneal_steps": 300, "steps": 300},
+    {"id": "CS4", "k": 20, "batch": 128, "bk": 2560, "lr": 0.0005, "grad_clip": 10.0, "epsilon_end": 0.3, "epsilon_anneal_steps": 300, "steps": 300},
+    {"id": "CS5", "k": 20, "batch": 128, "bk": 2560, "lr": 0.001,  "grad_clip": 1.0,  "epsilon_end": 0.5, "epsilon_anneal_steps": 300, "steps": 300}
+  ]
+}

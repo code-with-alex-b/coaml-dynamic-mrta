@@ -1,0 +1,3 @@
+split,n_records,mip_time_limit_seconds,mip_time_limit_uniform,mip_gap_target,mip_gap_target_uniform,n_proven_optimal,mean_residual_mip_gap,mean_residual_mip_gap_pct,n_records_kept,n_proven_optimal_kept,mean_residual_mip_gap_kept_pct,excluded_seeds
+val,200,60,1,0.01,1,9,0.21697160330605428,21.697160330605428,197,6,22.027573939700748,11044;11055;11169
+test,200,60,1,0.01,1,4,0.2224384934450374,22.24384934450374,200,4,22.24384934450374,none

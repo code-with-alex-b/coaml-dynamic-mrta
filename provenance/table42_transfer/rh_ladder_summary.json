@@ -1,0 +1,502 @@
+{
+  "n_bootstrap": 10000,
+  "bootstrap_seed": 20260731,
+  "results": [
+    {
+      "scale": "R=10,T=30",
+      "budget": 0.05,
+      "n": 60,
+      "mean_rh_cost": 191.2715258156237,
+      "ci": [
+        182.8527494361659,
+        199.90134881002362
+      ],
+      "served_all": 60,
+      "mean_windows": 31.9,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.6374085684430512,
+      "mean_build_s": 0.013881428041848382,
+      "mean_per_decision_s": 0.04994948153463135,
+      "policy_median_per_decision_s": 0.0014686670037917793,
+      "compute_multiple_vs_policy": 34.0100794840986,
+      "ladder_wall_s": 98.66471424483461,
+      "learned_policy": {
+        "mean_cost": 173.35935546169176,
+        "ratio_of_means": 1.103323932569016,
+        "ratio_ci": [
+          1.0787865028221977,
+          1.1281348723999367
+        ],
+        "mean_paired_difference": 17.91217035393191,
+        "sign_test": {
+          "n": 60,
+          "k": 7,
+          "p": 7.671918274276823e-10
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 212.64306159118084,
+        "ratio_of_means": 0.8994957295308078,
+        "ratio_ci": [
+          0.8828044745927462,
+          0.9163373455714436
+        ],
+        "mean_paired_difference": -21.37153577555712,
+        "sign_test": {
+          "n": 60,
+          "k": 55,
+          "p": 1.0382663478969434e-11
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 213.4254874208883,
+        "ratio_of_means": 0.8961981445000727,
+        "ratio_ci": [
+          0.881485105034265,
+          0.911017534187338
+        ],
+        "mean_paired_difference": -22.153961605264655,
+        "sign_test": {
+          "n": 60,
+          "k": 58,
+          "p": 3.1762786845135338e-15
+        }
+      }
+    },
+    {
+      "scale": "R=10,T=30",
+      "budget": 0.1,
+      "n": 60,
+      "mean_rh_cost": 187.8341589130314,
+      "ci": [
+        179.29207556208053,
+        196.41026975966736
+      ],
+      "served_all": 60,
+      "mean_windows": 31.7,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.6046267087276551,
+      "mean_build_s": 0.014069379182001834,
+      "mean_per_decision_s": 0.08134246685563386,
+      "policy_median_per_decision_s": 0.0014686670037917793,
+      "compute_multiple_vs_policy": 55.38523480518407,
+      "ladder_wall_s": 158.14060816541314,
+      "learned_policy": {
+        "mean_cost": 173.35935546169176,
+        "ratio_of_means": 1.0834959463986829,
+        "ratio_ci": [
+          1.0613147101615135,
+          1.105871378106749
+        ],
+        "mean_paired_difference": 14.474803451339646,
+        "sign_test": {
+          "n": 60,
+          "k": 11,
+          "p": 7.561280982396751e-07
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 212.64306159118084,
+        "ratio_of_means": 0.8833307680367861,
+        "ratio_ci": [
+          0.8666170647753997,
+          0.9005989575130334
+        ],
+        "mean_paired_difference": -24.808902678149384,
+        "sign_test": {
+          "n": 60,
+          "k": 56,
+          "p": 9.084503982403902e-13
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 213.4254874208883,
+        "ratio_of_means": 0.8800924443602689,
+        "ratio_ci": [
+          0.8644007529275612,
+          0.8964047368072827
+        ],
+        "mean_paired_difference": -25.591328507856918,
+        "sign_test": {
+          "n": 60,
+          "k": 58,
+          "p": 3.1762786845135338e-15
+        }
+      }
+    },
+    {
+      "scale": "R=10,T=30",
+      "budget": 0.25,
+      "n": 60,
+      "mean_rh_cost": 183.23770168794687,
+      "ci": [
+        175.08645993168912,
+        191.5231717275322
+      ],
+      "served_all": 60,
+      "mean_windows": 31.516666666666666,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.5441565309360127,
+      "mean_build_s": 0.01429934026150602,
+      "mean_per_decision_s": 0.16703962735587588,
+      "policy_median_per_decision_s": 0.0014686670037917793,
+      "compute_multiple_vs_policy": 113.73553496103327,
+      "ladder_wall_s": 320.1024077028269,
+      "learned_policy": {
+        "mean_cost": 173.35935546169176,
+        "ratio_of_means": 1.0569819044374447,
+        "ratio_ci": [
+          1.034538008856527,
+          1.0795052461181864
+        ],
+        "mean_paired_difference": 9.878346226255076,
+        "sign_test": {
+          "n": 60,
+          "k": 14,
+          "p": 4.223704562267977e-05
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 212.64306159118084,
+        "ratio_of_means": 0.8617149335454568,
+        "ratio_ci": [
+          0.8425557027414678,
+          0.8807731036363823
+        ],
+        "mean_paired_difference": -29.40535990323396,
+        "sign_test": {
+          "n": 60,
+          "k": 56,
+          "p": 9.084503982403902e-13
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 213.4254874208883,
+        "ratio_of_means": 0.8585558543277015,
+        "ratio_ci": [
+          0.8410063374487116,
+          0.8763464498289222
+        ],
+        "mean_paired_difference": -30.18778573294149,
+        "sign_test": {
+          "n": 60,
+          "k": 57,
+          "p": 6.253851603243987e-14
+        }
+      }
+    },
+    {
+      "scale": "R=10,T=30",
+      "budget": 1.0,
+      "n": 60,
+      "mean_rh_cost": 174.32179559945396,
+      "ci": [
+        166.92035228996838,
+        181.6502252672042
+      ],
+      "served_all": 60,
+      "mean_windows": 32.46666666666667,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.41940451745379875,
+      "mean_build_s": 0.014173608894609047,
+      "mean_per_decision_s": 0.4986685402467839,
+      "policy_median_per_decision_s": 0.0014686670037917793,
+      "compute_multiple_vs_policy": 339.53819276890545,
+      "ladder_wall_s": 979.8090695419814,
+      "learned_policy": {
+        "mean_cost": 173.35935546169176,
+        "ratio_of_means": 1.005551705791701,
+        "ratio_ci": [
+          0.988463339539893,
+          1.0227752550548086
+        ],
+        "mean_paired_difference": 0.9624401377621595,
+        "sign_test": {
+          "n": 60,
+          "k": 27,
+          "p": 0.5189580031896518
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 212.64306159118084,
+        "ratio_of_means": 0.8197859563111359,
+        "ratio_ci": [
+          0.8021925466136316,
+          0.8380526472258055
+        ],
+        "mean_paired_difference": -38.32126599172687,
+        "sign_test": {
+          "n": 60,
+          "k": 59,
+          "p": 1.0581813203458523e-16
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 213.4254874208883,
+        "ratio_of_means": 0.8167805902941694,
+        "ratio_ci": [
+          0.8005452624175333,
+          0.833761050636205
+        ],
+        "mean_paired_difference": -39.103691821434396,
+        "sign_test": {
+          "n": 60,
+          "k": 60,
+          "p": 1.734723475976807e-18
+        }
+      }
+    },
+    {
+      "scale": "R=30,T=90",
+      "budget": 0.05,
+      "n": 60,
+      "mean_rh_cost": 374.91032373516254,
+      "ci": [
+        358.7386350465875,
+        391.34532629574227
+      ],
+      "served_all": 60,
+      "mean_windows": 31.583333333333332,
+      "no_incumbent_rate": 0.1783641160949868,
+      "fallback_rate": 0.1783641160949868,
+      "time_limit_rate": 0.8174142480211082,
+      "mean_build_s": 0.2312155647908412,
+      "mean_per_decision_s": 0.28010003497833796,
+      "policy_median_per_decision_s": 0.0035839795018546283,
+      "compute_multiple_vs_policy": 78.15335853159667,
+      "ladder_wall_s": 564.6657744171098,
+      "learned_policy": {
+        "mean_cost": 354.78139802337836,
+        "ratio_of_means": 1.056736136178306,
+        "ratio_ci": [
+          1.0432424040334594,
+          1.070373019239225
+        ],
+        "mean_paired_difference": 20.128925711784177,
+        "sign_test": {
+          "n": 60,
+          "k": 11,
+          "p": 7.561280982396751e-07
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 391.94977603250584,
+        "ratio_of_means": 0.956526439510122,
+        "ratio_ci": [
+          0.9485765722235956,
+          0.964152968914023
+        ],
+        "mean_paired_difference": -17.039452297343413,
+        "sign_test": {
+          "n": 60,
+          "k": 56,
+          "p": 9.084503982403902e-13
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 387.77380425958984,
+        "ratio_of_means": 0.9668273607367865,
+        "ratio_ci": [
+          0.9587119371508979,
+          0.9745156453538906
+        ],
+        "mean_paired_difference": -12.863480524427297,
+        "sign_test": {
+          "n": 60,
+          "k": 55,
+          "p": 1.0382663478969434e-11
+        }
+      }
+    },
+    {
+      "scale": "R=30,T=90",
+      "budget": 0.1,
+      "n": 60,
+      "mean_rh_cost": 372.85174879878167,
+      "ci": [
+        356.6477721802603,
+        389.48912965722803
+      ],
+      "served_all": 60,
+      "mean_windows": 33.18333333333333,
+      "no_incumbent_rate": 0.011551983927674536,
+      "fallback_rate": 0.011551983927674536,
+      "time_limit_rate": 0.7790055248618785,
+      "mean_build_s": 0.24426301844319526,
+      "mean_per_decision_s": 0.33237602822712764,
+      "policy_median_per_decision_s": 0.0035839795018546283,
+      "compute_multiple_vs_policy": 92.73937757041595,
+      "ladder_wall_s": 707.9513584967353,
+      "learned_policy": {
+        "mean_cost": 354.78139802337836,
+        "ratio_of_means": 1.0509337605524982,
+        "ratio_ci": [
+          1.0384996637473065,
+          1.0635354872909062
+        ],
+        "mean_paired_difference": 18.07035077540346,
+        "sign_test": {
+          "n": 60,
+          "k": 9,
+          "p": 3.085035609438902e-08
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 391.94977603250584,
+        "ratio_of_means": 0.9512742999191297,
+        "ratio_ci": [
+          0.9429170999392735,
+          0.9596040828219575
+        ],
+        "mean_paired_difference": -19.09802723372413,
+        "sign_test": {
+          "n": 60,
+          "k": 57,
+          "p": 6.253851603243987e-14
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 387.77380425958984,
+        "ratio_of_means": 0.9615186603713468,
+        "ratio_ci": [
+          0.9522993641046351,
+          0.9706453727246271
+        ],
+        "mean_paired_difference": -14.922055460808014,
+        "sign_test": {
+          "n": 60,
+          "k": 52,
+          "p": 5.205691473372798e-09
+        }
+      }
+    },
+    {
+      "scale": "R=30,T=90",
+      "budget": 0.25,
+      "n": 60,
+      "mean_rh_cost": 370.5078716221018,
+      "ci": [
+        354.31634785468145,
+        387.0380571728171
+      ],
+      "served_all": 60,
+      "mean_windows": 33.03333333333333,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.7447023208879919,
+      "mean_build_s": 0.2458926810404809,
+      "mean_per_decision_s": 0.4492428105609443,
+      "policy_median_per_decision_s": 0.0035839795018546283,
+      "compute_multiple_vs_policy": 125.34748324550162,
+      "ladder_wall_s": 941.1564729210222,
+      "learned_policy": {
+        "mean_cost": 354.78139802337836,
+        "ratio_of_means": 1.0443272214562025,
+        "ratio_ci": [
+          1.0327279925071613,
+          1.055875373689811
+        ],
+        "mean_paired_difference": 15.726473598723544,
+        "sign_test": {
+          "n": 60,
+          "k": 10,
+          "p": 1.6163814566157175e-07
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 391.94977603250584,
+        "ratio_of_means": 0.9452942552297164,
+        "ratio_ci": [
+          0.9370819297736295,
+          0.953621812745211
+        ],
+        "mean_paired_difference": -21.441904410404046,
+        "sign_test": {
+          "n": 60,
+          "k": 57,
+          "p": 6.253851603243987e-14
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 387.77380425958984,
+        "ratio_of_means": 0.9554742160305145,
+        "ratio_ci": [
+          0.9467357197751737,
+          0.9641681183115665
+        ],
+        "mean_paired_difference": -17.26593263748792,
+        "sign_test": {
+          "n": 60,
+          "k": 56,
+          "p": 9.084503982403902e-13
+        }
+      }
+    },
+    {
+      "scale": "R=30,T=90",
+      "budget": 1.0,
+      "n": 60,
+      "mean_rh_cost": 368.7453600488103,
+      "ci": [
+        352.5275523644885,
+        385.46888398898733
+      ],
+      "served_all": 60,
+      "mean_windows": 32.95,
+      "no_incumbent_rate": 0.0,
+      "fallback_rate": 0.0,
+      "time_limit_rate": 0.6889226100151745,
+      "mean_build_s": 0.24704250752722093,
+      "mean_per_decision_s": 0.9974266804887093,
+      "policy_median_per_decision_s": 0.0035839795018546283,
+      "compute_multiple_vs_policy": 278.3014467500619,
+      "ladder_wall_s": 2025.2901633381261,
+      "learned_policy": {
+        "mean_cost": 354.78139802337836,
+        "ratio_of_means": 1.0393593410004878,
+        "ratio_ci": [
+          1.0276757807326515,
+          1.0510779321217338
+        ],
+        "mean_paired_difference": 13.963962025431957,
+        "sign_test": {
+          "n": 60,
+          "k": 13,
+          "p": 1.2146708022957309e-05
+        }
+      },
+      "hungarian_distance_only": {
+        "mean_cost": 391.94977603250584,
+        "ratio_of_means": 0.9407974760986441,
+        "ratio_ci": [
+          0.9322031282962892,
+          0.9492711752045717
+        ],
+        "mean_paired_difference": -23.204415983695636,
+        "sign_test": {
+          "n": 60,
+          "k": 58,
+          "p": 3.1762786845135338e-15
+        }
+      },
+      "hungarian_kappa": {
+        "mean_cost": 387.77380425958984,
+        "ratio_of_means": 0.9509290106712799,
+        "ratio_ci": [
+          0.9419335880683147,
+          0.9593744643762324
+        ],
+        "mean_paired_difference": -19.028444210779508,
+        "sign_test": {
+          "n": 60,
+          "k": 55,
+          "p": 1.0382663478969434e-11
+        }
+      }
+    }
+  ]
+}

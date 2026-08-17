@@ -1,0 +1,71 @@
+# Environment for the Dynamic MRTA thesis code.
+#
+# Reproduces the interpreter both notebooks and the test suite were run under.
+#
+#   conda env create -f environment.yml
+#   conda activate coaml
+#   PYTHONPATH="$PWD/src" python -m pytest tests/ -q
+#
+# ARCHITECTURE NOTE. This environment is x86_64. On the machine that produced
+# every number in the thesis it runs on Apple Silicon under Rosetta 2
+# translation, which `sysctl.proc_translated` reports as 1 from inside the
+# interpreter while `uname -m` reports arm64. That is deliberate and must be
+# reproduced, because every timing figure in the thesis was measured under
+# translation. On Apple Silicon, create the environment with the subdir forced:
+#
+#   CONDA_SUBDIR=osx-64 conda env create -f environment.yml
+#   conda activate coaml
+#   conda config --env --set subdir osx-64
+#
+# Without that, conda resolves osx-arm64, pip installs arm64 wheels, and the
+# result is a valid environment that runs faster than the one the timings were
+# measured on. Costs and gap closures are unaffected, since they are
+# deterministic under hard decode. Only latency figures are.
+#
+# torch 2.2.2 is the last release publishing macOS x86_64 wheels, so the pin is
+# load bearing on this platform rather than merely conservative.
+#
+# GUROBI. The `gurobi` channel below is not a default channel and must be
+# present. The conda package carries no licence. Without one, notebook one is
+# unaffected because it invokes no solver, and notebook two fails at its
+# preflight cell with instructions. Free academic licences are at
+# https://www.gurobi.com/academia/ . Licence terms for this project are
+# research and educational use only, and no licence file is in this repository.
+
+name: coaml
+
+channels:
+  - gurobi          # gurobipy 12.0.2, not available on defaults
+  - defaults
+
+dependencies:
+  # Interpreter. The only conda-managed package other than Gurobi.
+  - python=3.11.13
+
+  # Solver. Conda package from the gurobi channel, matching the installed build.
+  - gurobi=12.0.2
+
+  - pip
+  - pip:
+      # Numerics. numpy is pinned below 2.0 because torch 2.2.2 was built
+      # against the 1.x ABI.
+      - numpy==1.26.4
+      - scipy==1.17.1
+
+      # Model. torch_geometric supplies SAGEConv, used by
+      # src/scoring/gnn_scorer.py, and pulls its own dependencies.
+      - torch==2.2.2
+      - torch-geometric==2.7.0
+
+      # Figures. All four files in figures/ import matplotlib; the two budget
+      # figures also use pandas.
+      - matplotlib==3.10.9
+      - pandas==3.0.2
+
+      # Test suite. 121 tests in the shipping set.
+      - pytest==9.0.3
+
+      # Notebooks. Install with `python -m pip`; a bare `pip` can resolve to
+      # another interpreter on PATH and install outside this environment.
+      - notebook==7.6.2
+      - ipykernel==6.30.1

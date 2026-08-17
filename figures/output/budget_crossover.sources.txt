@@ -1,0 +1,61 @@
+Figure: budget_crossover.pdf
+Written: 2026-08-17 11:11:41 UTC
+
+Source files and sha256
+-----------------------
+provenance/figure42_budget/a3_rh_test_h1_b1.0s.csv
+  bytes  23983
+  sha256 c796cf84c503b9c7236247ba55462a5870ab3a02abe38fb9f517f6cd0cd80515
+provenance/figure42_budget/a3_ladder_walltimes.txt
+  bytes  741
+  sha256 18693a50d5ad1b631a7f7f65c06e11747380bcdbfa12f0e7866609d1c04283a8
+provenance/table41_main_results/a2_per_instance_test_20260730.csv
+  bytes  82469
+  sha256 5b796e007f0ae10811732a48b631e750bc33afd552833367479c090ac8cdcfa4
+provenance/figure42_budget/b3_timing_test_20260731.csv
+  bytes  1040437
+  sha256 cad3b8e464a8d4e085dbeedb6190accb764a27ae3ad34d1b2d1531721aba153a
+provenance/table42_transfer/rh_ladder_per_instance.csv
+  bytes  107569
+  sha256 4e807951af8f754bd2c86c5226aa3217472fd384d395039c08722323b8a771fe
+provenance/table42_transfer/transfer_r10t30_per_instance.csv
+  bytes  16223
+  sha256 c08000ad7d38defeab7f218526125c16cd677363068d4ca4a495e6680b35a3d6
+provenance/table42_transfer/transfer_r30t90_per_instance.csv
+  bytes  16098
+  sha256 fa299002e12a1b79159166ec2e05d0fd16d7897d293e2d5d1b4ce4d33a5f25e0
+provenance/table42_transfer/timing_r10t30.csv
+  bytes  390339
+  sha256 7fa697abdde809f41bc5de297a84e2d75172cff6c0b3c11f52b264df20c1a073
+provenance/table42_transfer/timing_r30t90.csv
+  bytes  374133
+  sha256 4b0edd67c17d871b45f709ed2954d8f594a1613c7b15e18f387bf3fcf3f396ac
+figures/style.py
+  bytes  6222
+  sha256 f1219ca27d7c7aab52838caa8249dc83d2f460676fb04ca964d38585eed95c9b
+figures/fig_budget_crossover.py
+  bytes  17084
+  sha256 aa7d7f4ab26e793b27e3e7b5208c8e519e5425768832aa797317e5804190db7e
+
+Values
+------
+R=6,T=18: ratio 0.8879 [0.8752, 0.9007], n=200, RH mean 113.8215, learned mean 128.1946
+R=10,T=30: ratio 1.0056 [0.9885, 1.0228], n=60, RH mean 174.3218, learned mean 173.3594
+R=30,T=90: ratio 1.0394 [1.0277, 1.0511], n=60, RH mean 368.7454, learned mean 354.7814
+R=6,T=18 compute: 203.4x (rolling horizon 225.61 ms per decision, learned policy 1.1092 ms)
+R=10,T=30 compute: 340.7x (rolling horizon 500.39 ms per decision, learned policy 1.4687 ms)
+R=30,T=90 compute: 283.6x (rolling horizon 1016.48 ms per decision, learned policy 3.5840 ms)
+bootstrap: 10000 paired resamples, percentile interval, numpy default_rng seed 20260731
+crossover: below one at R=6,T=18 and above one at both larger scales, so the advantage flips between six robots and ten
+
+Notes
+-----
+Quantity plotted: mean cost of the rolling horizon at a 1 s solve budget divided by mean cost of the learned policy, ratio of means, on the same instances at each scale. Above one the learned policy is cheaper. Computed here from the per-instance CSVs listed above; no value is taken from any summary table, report or aggregate JSON.
+Instance matching is asserted, not assumed. The script raises if the rolling horizon and learned policy seed sets differ at any scale. All three passed: n=200 on seeds 11200 to 11399 at R=6,T=18, n=60 on 96000 to 96059 at R=10,T=30, and n=60 on 96100 to 96159 at R=30,T=90.
+Provenance of the two transfer scales. The 1 s rolling horizon costs are the 1.0 s rung of rh_ladder_per_instance.csv and the learned policy costs are from the transfer table's own per-instance files, so these points are the same runs the transfer table was built from. Confirmed numerically: the learned policy means computed here, 173.3594 and 354.7814, reproduce the figures quoted in rh_ladder_report.md, 173.359 and 354.781.
+Provenance of the training scale. R=6,T=18 is NOT from the transfer table. Its rolling horizon point is the 1.0 s rung of the seven budget A3 ladder on the frozen test split and its learned policy costs are the headline test evaluation, both on seeds 11200 to 11399. The transfer table's own r6t18 file covers seeds 11000 to 11199, a different split, and is deliberately not used, because pairing the ladder against it would compare costs on different instances.
+Intervals are paired: one bootstrap resample draws instances and takes both policies' costs on the drawn instances, preserving the correlation between the two policies on an instance. An unpaired interval on this quantity would be wider and would not answer the question the figure asks.
+The R=10,T=30 interval straddles one. The crossover is therefore located between six and ten robots, but parity at ten robots is not resolved by this evidence and the figure should not be read as showing the learned policy ahead at that scale.
+Compute annotations. Each point is labelled with the compute the rolling horizon used at that point divided by the learned policy's own compute at the same scale. The rolling horizon figure is measured wall clock per instance over the dispatcher invocations that reached the solver, so it includes model construction, which sits outside the Gurobi time limit. The learned policy figure is the median whole-decision wall clock from the timing runs, 1.1092 ms, 1.4687 ms and 3.5840 ms. All three are for the 1 s budget, which is the budget this figure plots.
+The compute advantage is large at every point but it is NOT monotone: 203x, 341x, 284x. It falls from ten robots to thirty because the same 1 s budget is being divided by a learned policy that is itself slower at the larger scale, 3.5840 ms against 1.4687 ms per decision, not because the rolling horizon was given less absolute compute. In absolute terms it rises throughout, 225.61 ms, 500.39 ms and 1016.48 ms per decision. The figure should not be captioned as a growing compute advantage.
+No solver was invoked, nothing was evaluated and no cache record was read or modified by this script. It reads CSVs only.
